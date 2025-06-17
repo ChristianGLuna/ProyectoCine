@@ -29,3 +29,40 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.login-container {
+    background-color: #111;
+    color: white;
+    padding: 2rem;
+    max-width: 400px;
+    margin: 5rem auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.logo-img {
+    display: block;
+    margin: 0 auto 1.5rem;
+    width: 100px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.form-links {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.form-links a {
+    color: #48aaff;
+    text-decoration: none;
+}

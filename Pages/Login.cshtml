@@ -1,0 +1,53 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@model Proyecto_Cine.Pages.LoginModel
+@attribute [AllowAnonymous]
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<div class="login-container">
+    <form method="post">
+        <div class="form-logo">
+            <img src="~/images/logo.svg" alt="Logo" class="logo-img"/>
+        </div>
+
+        @* Aquí se muestra el mensaje de error general *@
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div>@error.ErrorMessage</div>
+                }
+            </div>
+        }
+
+        <div class="form-group">
+            <label asp-for="LoginData.Correo"></label>
+            <input asp-for="LoginData.Correo" class="form-control"/>
+            <span asp-validation-for="LoginData.Correo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LoginData.Contrasena"></label>
+            <input asp-for="LoginData.Contrasena" class="form-control" autocomplete="off" />
+            <span asp-validation-for="LoginData.Contrasena" class="text-danger"></span>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <a asp-page="/Home/Index" class="btn btn-secondary">Invitado</a>
+        </div>
+
+        <div class="form-links">
+            <a asp-page="/RecuperarContrasena">¿Olvidaste tu contraseña?</a><br />
+            <span>¿No tienes cuenta? <a asp-page="/Registro">Crear Cuenta</a></span>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

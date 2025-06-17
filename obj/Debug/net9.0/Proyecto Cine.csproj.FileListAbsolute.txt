@@ -87,10 +87,11 @@ C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\Proyecto Cine.csproj.CoreCompileIn
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\Proyecto Cine.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\Proyecto Cine.RazorAssemblyInfo.cache
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\Proyecto Cine.RazorAssemblyInfo.cs
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\Proyecto Cine.sourcelink.json
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\scopedcss\bundle\Proyecto Cine.styles.css
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\scopedcss\projectbundle\Proyecto Cine.bundle.scp.css
-C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\7ncsbchxkx-b9sayid5wm.gz
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\7ncsbchxkx-mzi84g438f.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\miv5v9l9fc-61n19gt1b8.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\09r96kcpii-xtxxf3hu2r.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\lm1rsnaaj7-bqjiyaj88i.gz
@@ -152,6 +153,7 @@ C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\m482yujkg0-2z0ns9nrw6.g
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\mjx02qcrdg-muycvpuwrr.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\i5ms8z6v93-87fc7y1x7t.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\gyzxbvgr5i-mlv21k5csn.gz
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\gt11qn1bgm-aow3sh7c5t.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\7dqip8axj6-dg3j7qrlo7.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\ciscv6vcrt-dg3j7qrlo7.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\staticwebassets.build.json
