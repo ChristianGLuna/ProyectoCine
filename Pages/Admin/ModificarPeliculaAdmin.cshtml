@@ -2,55 +2,74 @@
 @model ModificarPeliculaAdminModel
 @{
     ViewData["Title"] = Model.EsNueva ? "Añadir Película" : "Modificar Película";
+    Layout = null;
 }
 
-<h2>@ViewData["Title"]</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/ModificarPeliculaAdmin.css" />
+</head>
+<body>
 
-<form method="post">
-    <div>
-        <label>Título:</label>
-        <input asp-for="Pelicula.Titulo" class="form-control" />
+<a asp-page="CarteleraAdmin" class="back-button">← Regresar</a>
+
+<div class="container">
+    <div class="image-section">
+        <img id="preview" src="@Model.Pelicula.Imagen" alt="Vista previa" />
     </div>
 
-    <div>
-        <label>Género:</label>
-        <input asp-for="Pelicula.Genero" class="form-control" />
-    </div>
+    <form method="post" enctype="multipart/form-data" class="form-card">
+        <h3 style="text-align: center;">Película</h3>
+        <p style="text-align: center; font-size: 0.8rem;">Agregar/modificar película</p>
 
-    <div>
-        <label>Duración (minutos):</label>
-        <input asp-for="Pelicula.Duracion" type="number" class="form-control" />
-    </div>
+        <label>Título</label>
+        <input asp-for="Pelicula.Titulo" />
 
-    <div>
-        <label>Clasificación:</label>
-        <input asp-for="Pelicula.Clasificacion" class="form-control" />
-    </div>
+        <label>Género</label>
+        <input asp-for="Pelicula.Genero" />
 
-    <div>
-        <label>Idioma:</label>
-        <input asp-for="Pelicula.Idioma" class="form-control" />
-    </div>
+        <label>Duración</label>
+        <input asp-for="Pelicula.Duracion" type="number" />
 
-    <div>
-        <label>Sinopsis:</label>
-        <textarea asp-for="Pelicula.Sinopsis" class="form-control"></textarea>
-    </div>
+        <label>Clasificación</label>
+        <select asp-for="Pelicula.Clasificacion">
+            <option value="">Seleccione</option>
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
 
-    <div>
-        <label>Imagen (URL o nombre de archivo):</label>
-        <input asp-for="Pelicula.Imagen" class="form-control" />
-    </div>
+        <label>Sinopsis</label>
+        <textarea asp-for="Pelicula.Sinopsis"></textarea>
 
-    <div>
-        <label>¿Activa?:</label>
-        <input asp-for="Pelicula.Activa" type="checkbox" />
-    </div>
+        <!-- Subida de imagen real -->
+        <label>Imagen:</label>
+        <input type="file" name="ArchivoImagen" accept="image/*" onchange="previewImage(this)" />
 
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a asp-page="CarteleraAdmin" class="btn btn-secondary">Cancelar</a>
-</form>
+        <!-- Valores ocultos -->
+        <input type="hidden" asp-for="Pelicula.Activa" />
+        <input type="hidden" asp-for="Pelicula.Imagen" />
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+        <button type="submit" class="btn-primary">Guardar</button>
+    </form>
+</div>
+
+<script>
+    function previewImage(input) {
+        const file = input.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => document.getElementById('preview').src = e.target.result;
+        reader.readAsDataURL(file);
+    }
+</script>
+
+</body>
+</html>
