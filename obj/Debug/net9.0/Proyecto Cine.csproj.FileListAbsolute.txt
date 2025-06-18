@@ -516,3 +516,8 @@ C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.pdb
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.genruntimeconfig.cache
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\ref\Proyecto Cine.dll
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\qr7jbl36ee-saazgaog7j.gz
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\j6fog3yoxb-q77drdypne.gz
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\dc2mko6tel-i1er93ou9i.gz
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\h0h6k8n8mg-3nlg0mq8e2.gz
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\s8r94ccka2-9nykkzmkvy.gz
+C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\qr7jbl36ee-ndaboyx86r.gz
