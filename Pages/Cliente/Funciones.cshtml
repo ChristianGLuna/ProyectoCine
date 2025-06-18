@@ -1,0 +1,115 @@
+@page
+@model FuncionesModel
+@{
+    ViewData["Title"] = "Funciones";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/FuncionesCliente.css"/>
+</head>
+<body>
+
+<a href="/" class="btn-regresar">← Regresar</a>
+
+<header class="encabezado">
+    <img src="/images/logo.svg" alt="Logo" class="logo" />
+    <div>
+        <h1>Funciones</h1>
+        <p>Horarios y salas disponibles</p>
+    </div>
+    <div class="menu-desplegables">
+        <select>
+            <option>Seleccione su ubicación</option>
+            <option>Aguascalientes</option>
+            <option>Campeche</option>
+            <option>CDMX</option>
+            <option>Puebla</option>
+        </select>
+        <select>
+            <option>Seleccione su sucursal</option>
+            <option>Plaza 1</option>
+            <option>Plaza 2</option>
+            <option>Plaza 3</option>
+            <option>Plaza 4</option>
+        </select>
+    </div>
+    <div class="icono-user">👤</div>
+</header>
+
+<nav class="navegacion">
+    <a asp-page="/Cliente/Cartelera">Cartelera</a> › 
+    <a asp-page="/Cliente/Funciones">Funciones</a> ›
+    <a asp-page="/Cliente/Boletos">Boletos</a> › 
+    <a asp-page="/Cliente/Asientos">Asientos</a> › 
+    <a asp-page="/Cliente/Resumen">Resumen</a>
+</nav>
+
+<section class="seleccion-fecha">
+    <label>Fecha</label>
+    <form method="get" class="input-fecha">
+        <input type="hidden" name="id" value="@Model.Pelicula?.Id" />
+        <input type="date" name="fecha" value="@(Model.Fecha?.ToString() ?? "")" />
+        <button type="submit" class="btn-filtrar">🧪 Filtrar</button>
+    </form>
+</section>
+
+<section class="contenedor-funciones">
+    <div class="lista-funciones">
+
+        <div class="idioma">
+            <h3>Español</h3>
+            <div class="horarios">
+                @foreach (var funcion in Model.FuncionesEspañol)
+                {
+                    <form method="get" asp-page="/Cliente/Boletos">
+                        <input type="hidden" name="idFuncion" value="@funcion.Id" />
+                        <button class="horario" type="submit">
+                            @funcion.HoraInicio.ToString()<br/>
+                            <span>@funcion.Sala?.Nombre</span>
+                        </button>
+                    </form>
+                }
+            </div>
+        </div>
+
+        <div class="idioma">
+            <h3>Subtitulada</h3>
+            <div class="horarios">
+                @foreach (var funcion in Model.FuncionesSubtituladas)
+                {
+                    <form method="get" asp-page="/Cliente/Boletos">
+                        <input type="hidden" name="idFuncion" value="@funcion.Id" />
+                        <button class="horario" type="submit">
+                            @funcion.HoraInicio.ToString()<br/>
+                            <span>@funcion.Sala?.Nombre</span>
+                        </button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+    <aside class="info-pelicula">
+        <img src="@Model.Pelicula?.Imagen" />
+        <div class="detalle">
+            <div class="clasificacion">@Model.Pelicula?.Clasificacion</div>
+            <strong>@Model.Pelicula?.Titulo</strong>
+            <p><em>Duración:</em> @Model.Pelicula?.Duracion min</p>
+            <p class="descripcion">@Model.Pelicula?.Sinopsis</p>
+            <p><strong>Cine:</strong> Cine Plaza Museo</p>
+            <p><strong>Función:</strong> Hoy, @DateTime.Now.ToShortTimeString()</p>
+        </div>
+    </aside>
+</section>
+
+<footer class="boton-final">
+    <a href="/Cliente/Boletos" class="btn-continuar">Continuar</a>
+</footer>
+
+</body>
+</html>
