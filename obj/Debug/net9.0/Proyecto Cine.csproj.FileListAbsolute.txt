@@ -339,3 +339,4 @@ C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.pdb
 C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.genruntimeconfig.cache
 C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\ref\Proyecto Cine.dll
 C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\h0h6k8n8mg-6uu88np9l7.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\dc2mko6tel-i1er93ou9i.gz
