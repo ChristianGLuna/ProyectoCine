@@ -1,10 +1,7 @@
 @page
-@using Microsoft.AspNetCore.Authorization
 @model Proyecto_Cine.Pages.LoginModel
-@attribute [AllowAnonymous]
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = "_Layout";
+    ViewData["Title"] = "Iniciar Sesión";
 }
 
 <div class="login-container">
@@ -25,26 +22,40 @@
         }
 
         <div class="form-group">
-            <label asp-for="LoginData.Correo"></label>
-            <input asp-for="LoginData.Correo" class="form-control"/>
-            <span asp-validation-for="LoginData.Correo" class="text-danger"></span>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" type="email" class="form-control" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="LoginData.Contrasena"></label>
-            <input asp-for="LoginData.Contrasena" class="form-control" autocomplete="off" />
-            <span asp-validation-for="LoginData.Contrasena" class="text-danger"></span>
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control" autocomplete="off" type="password" required/>
+            <span asp-validation-for="Password" class="text-danger"></span>
         </div>
 
         <div class="form-buttons">
             <button type="submit" class="btn btn-primary">Ingresar</button>
-            <a asp-page="/Home/Index" class="btn btn-secondary">Invitado</a>
+            <a asp-page="/home" class="btn btn-secondary">Invitado</a>
         </div>
 
         <div class="form-links">
             <a asp-page="/RecuperarContrasena">¿Olvidaste tu contraseña?</a><br />
             <span>¿No tienes cuenta? <a asp-page="/Registro">Crear Cuenta</a></span>
         </div>
+
+        <div style="color:red;">
+            @Model.MensajeError
+        </div>
+
+        @* @if (!string.IsNullOrEmpty(Model.HashDebug))
+        {
+            <hr />
+            <div style="color:green;">
+                <p><strong>Hash ingresado:</strong> @Model.HashDebug</p>
+                <p><strong>Hash en BD:</strong> @Model.HashGuardado</p>
+                <p><strong>Coinciden:</strong> @(Model.HashMatch ? "Sí ✅" : "No ❌")</p>
+            </div>
+        } *@
     </form>
 </div>
 

@@ -17,12 +17,14 @@
 
 <div class="admin-panel">
     <aside class="sidebar">
-        <img src="/images/logo.svg" alt="Logo Cine" class="logo" />
-        <nav>
-            <a class="btn" asp-page="/Admin/CarteleraAdmin">Películas</a>
-            <a class="btn active" asp-page="/Admin/FuncionesAdmin">Funciones</a>
-            <a class="btn" asp-page="/Admin/SalasAdmin">Salas</a>
-        </nav>
+        <div class="logo">
+            <img src="~/images/logo.svg" alt="Logo" class="logo-img" />
+        </div>
+        <h2>Administrador</h2>
+        <a href="/Admin/PanelAdmin" class="btn">Incio Admin</a>
+        <a href="/Admin/CarteleraAdmin" class="btn">Películas</a>
+        <a href="/Admin/FuncionesAdmin" class="btn">Funciones</a>
+        <a href="/Admin/SalasAdmin" class="btn">Salas</a>
     </aside>
 
     <main class="content">
