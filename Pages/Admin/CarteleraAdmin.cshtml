@@ -1,0 +1,54 @@
+@page
+@model CarteleraAdminModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Cartelera - Admin";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/CarteleraAdmin.css" />
+</head>
+<body>
+
+<div class="admin-panel">
+    <aside class="sidebar">
+        <img src="/images/logo.svg" alt="Logo Cine" class="logo" />
+        <nav>
+            <a class="btn active">Películas</a>
+            <a class="btn" asp-page="/Admin/FuncionesAdmin">Funciones</a>
+            <a class="btn" asp-page="/Admin/SalasAdmin">Salas</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h2>Cartelera</h2>
+        <p>Películas en exhibición</p>
+
+        <form method="get" class="search-form">
+            <input type="text" name="searchTerm" value="@Model.SearchTerm" placeholder="Buscar película..." />
+            <button type="submit">🔍</button>
+            <a class="btn" asp-page="ModificarPeliculaAdmin">+ Añadir</a>
+        </form>
+
+        <div class="movie-grid">
+            @foreach (var pelicula in Model.Peliculas)
+            {
+                <div class="movie-card">
+                    <img src="@pelicula.Imagen" alt="@pelicula.Titulo" />
+                    <button class="btn-remove" asp-page-handler="Eliminar" asp-route-id="@pelicula.Id">Quitar</button>
+                    <h4>@pelicula.Titulo</h4>
+                    <span class="badge">@pelicula.Clasificacion</span>
+                    <a class="edit-link" asp-page="ModificarPeliculaAdmin" asp-route-id="@pelicula.Id">Modificar</a>
+                </div>
+            }
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

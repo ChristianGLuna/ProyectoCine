@@ -1,0 +1,56 @@
+@page "{id?}"
+@model ModificarPeliculaAdminModel
+@{
+    ViewData["Title"] = Model.EsNueva ? "Añadir Película" : "Modificar Película";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div>
+        <label>Título:</label>
+        <input asp-for="Pelicula.Titulo" class="form-control" />
+    </div>
+
+    <div>
+        <label>Género:</label>
+        <input asp-for="Pelicula.Genero" class="form-control" />
+    </div>
+
+    <div>
+        <label>Duración (minutos):</label>
+        <input asp-for="Pelicula.Duracion" type="number" class="form-control" />
+    </div>
+
+    <div>
+        <label>Clasificación:</label>
+        <input asp-for="Pelicula.Clasificacion" class="form-control" />
+    </div>
+
+    <div>
+        <label>Idioma:</label>
+        <input asp-for="Pelicula.Idioma" class="form-control" />
+    </div>
+
+    <div>
+        <label>Sinopsis:</label>
+        <textarea asp-for="Pelicula.Sinopsis" class="form-control"></textarea>
+    </div>
+
+    <div>
+        <label>Imagen (URL o nombre de archivo):</label>
+        <input asp-for="Pelicula.Imagen" class="form-control" />
+    </div>
+
+    <div>
+        <label>¿Activa?:</label>
+        <input asp-for="Pelicula.Activa" type="checkbox" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-page="CarteleraAdmin" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

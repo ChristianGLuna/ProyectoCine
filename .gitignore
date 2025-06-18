@@ -1,0 +1,14 @@
+bin/
+obj/
+*.gz
+*.db
+*.log
+*.pdb
+*.user
+*.suo
+*.cache
+.vscode/
+.env
+node_modules/
+wwwroot/images/*.tmp
+

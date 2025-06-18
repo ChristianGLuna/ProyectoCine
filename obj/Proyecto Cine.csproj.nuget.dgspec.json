@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gaelr\\Proyecto Cine\\Proyecto Cine.csproj": {}
+    "C:\\Users\\isaib\\ProcesosSoftware\\ProyectoCine\\Proyecto Cine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gaelr\\Proyecto Cine\\Proyecto Cine.csproj": {
+    "C:\\Users\\isaib\\ProcesosSoftware\\ProyectoCine\\Proyecto Cine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gaelr\\Proyecto Cine\\Proyecto Cine.csproj",
+        "projectUniqueName": "C:\\Users\\isaib\\ProcesosSoftware\\ProyectoCine\\Proyecto Cine.csproj",
         "projectName": "Proyecto Cine",
-        "projectPath": "C:\\Users\\gaelr\\Proyecto Cine\\Proyecto Cine.csproj",
-        "packagesPath": "C:\\Users\\gaelr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gaelr\\Proyecto Cine\\obj\\",
+        "projectPath": "C:\\Users\\isaib\\ProcesosSoftware\\ProyectoCine\\Proyecto Cine.csproj",
+        "packagesPath": "C:\\Users\\isaib\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\isaib\\ProcesosSoftware\\ProyectoCine\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gaelr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\isaib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -84,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

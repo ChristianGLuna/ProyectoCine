@@ -166,3 +166,176 @@ C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\refint\Proyecto Cine.dll
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\Proyecto Cine.pdb
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\Proyecto Cine.genruntimeconfig.cache
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\ref\Proyecto Cine.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.csproj.AssemblyReference.cache
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.AssemblyInfoInputs.cache
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.AssemblyInfo.cs
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.csproj.CoreCompileInputs.cache
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.RazorAssemblyInfo.cache
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.RazorAssemblyInfo.cs
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.sourcelink.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\appsettings.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Proyecto Cine.staticwebassets.runtime.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Proyecto Cine.staticwebassets.endpoints.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Proyecto Cine.exe
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Proyecto Cine.deps.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Proyecto Cine.runtimeconfig.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Proyecto Cine.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Proyecto Cine.pdb
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Humanizer.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\MySqlConnector.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\scopedcss\bundle\Proyecto Cine.styles.css
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\scopedcss\projectbundle\Proyecto Cine.bundle.scp.css
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\7ncsbchxkx-mzi84g438f.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\miv5v9l9fc-61n19gt1b8.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\gt11qn1bgm-aow3sh7c5t.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\09r96kcpii-xtxxf3hu2r.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\lm1rsnaaj7-t1cqhe9u97.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\qan0tjaxas-c2jlpeoesf.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\oyn8ws3wk9-sejl45xvog.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\5jv3ro4yfn-aexeepp0ev.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\sv3evhbsvo-xvp3kq03qx.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\z4p9m2jpue-ausgxo2sd3.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\u045ijl5si-22vffe00uq.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\p8sex7vqdj-cosvhxvwiu.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\ubila8j0g5-qesaa3a1fm.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\y9me2cicvj-fvhpjtyr6v.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\9xtzd6gk9j-tmc1g35s3z.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\o5kdpec79v-fsbi9cje9m.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\z22eyzyrkz-rxsg74s51o.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\3nsxlpo4p8-ee0r1s7dh0.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\a9kveh26sz-q9ht133ko3.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\bv6cm86o9z-jd9uben2k1.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\0lk06l9fp4-gye83jo8yx.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\xrakknlrmb-r4e9w2rdcm.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\e4sfq99eh2-wl58j5mj3v.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\ri9ys9454e-c2oey78nd0.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\f4hfus7cnt-d4r6k3f320.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\q6yaqqdvyt-j5mq2jizvt.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\47jvj9xrn2-keugtjm085.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\p1a7cefxql-nvvlpmu67g.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\hkuw0yucyv-zub09dkrxp.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\3f55x41878-pj5nd1wqec.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\sp9it6nkl6-43atpzeawx.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\6wyvpc1t7p-v0zj4ognzu.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\zz8mb8o4e9-ynyaa8k90p.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\f2idvls4h1-hrwsygsryq.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\329ru6bwgi-c63t5i9ira.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\8nh8ucjw6m-ft3s53vfgj.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\yex169zcmz-4094rpi4f9.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\40n7bagpjh-6pdc2jztkx.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\n6tumpv9ad-hd3gran6i8.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\6ouaq28asy-iovd86k7lj.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\rqnszpvmww-ltid2c489k.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\qc7tl74vny-kbrnm935zg.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\xa07nifi53-8vyfqsqgz1.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\br8h41m00s-y7v9cxd14o.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\odh07zsv30-u9q1upor1n.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\k3o2un09j9-h1s4sie4z3.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\nsukxtd2e8-4d85u1mtcx.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\seeccs336o-0j3bgjxly4.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\qa3b6bxacb-03hjc8e09r.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\go7umpqdtc-48y08845bh.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\ui1abejgrd-356vix0kms.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\ua5plyfma1-83jwlth58m.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\9dpzy0r1qu-mrlpezrjn3.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\dhf0jgsuid-worgj0nhwm.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\s0ycog14bo-gk0pw8i4co.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\ppul4evyef-x0q3zqp4vz.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\yw0wq9y0fv-d6nrnj6jjx.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\gxioe6zeab-m9qm4tazc0.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\p2s9kzetff-ttgo8qnofa.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\m482yujkg0-jjsuc0puko.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\mjx02qcrdg-9vr69e8ynj.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\i5ms8z6v93-87fc7y1x7t.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\gyzxbvgr5i-mlv21k5csn.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\7dqip8axj6-dg3j7qrlo7.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\ciscv6vcrt-dg3j7qrlo7.gz
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto.4DA5D77E.Up2Date
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\refint\Proyecto Cine.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.pdb
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.genruntimeconfig.cache
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\ref\Proyecto Cine.dll
+C:\Users\isaib\ProcesosSoftware\ProyectoCine\obj\Debug\net9.0\compressed\h0h6k8n8mg-6uu88np9l7.gz
