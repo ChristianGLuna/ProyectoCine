@@ -40,7 +40,11 @@
             {
                 <div class="movie-card">
                     <img src="@pelicula.Imagen" alt="@pelicula.Titulo" />
-                    <button class="btn-remove" asp-page-handler="Eliminar" asp-route-id="@pelicula.Id">Quitar</button>
+
+                    <form method="post" asp-page-handler="Desactivar" asp-route-id="@pelicula.Id">
+                        <button type="submit" class="btn-remove">Quitar</button>
+                    </form>
+
                     <h4>@pelicula.Titulo</h4>
                     <span class="badge">@pelicula.Clasificacion</span>
                     <a class="edit-link" asp-page="ModificarPeliculaAdmin" asp-route-id="@pelicula.Id">Modificar</a>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Proyecto_Cine.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 public class CarteleraAdminModel : PageModel
 {
@@ -14,32 +15,33 @@ public class CarteleraAdminModel : PageModel
     }
 
     public List<Pelicula> Peliculas { get; set; } = new();
+
     [BindProperty(SupportsGet = true)]
     public string? SearchTerm { get; set; }
 
     public void OnGet()
-{
-    var query = _context.Peliculas
-        .Where(p => p.Activa == true); // Mostrar solo activas
-
-    if (!string.IsNullOrWhiteSpace(SearchTerm))
     {
-        query = query.Where(p => p.Titulo.Contains(SearchTerm));
-    }
+        var query = _context.Peliculas
+            .Where(p => p.Activa == true); // Solo películas activas
 
-    Peliculas = query.ToList();
-}
-
-
-    public IActionResult OnPostEliminar(int id)
-    {
-        var pelicula = _context.Peliculas.Find(id);
-        if (pelicula != null)
+        if (!string.IsNullOrWhiteSpace(SearchTerm))
         {
-            _context.Peliculas.Remove(pelicula);
-            _context.SaveChanges();
+            query = query.Where(p => p.Titulo.Contains(SearchTerm));
         }
 
-        return RedirectToPage();
+        Peliculas = query.ToList();
+    }
+
+    // Método POST: desactiva una película (Quitar)
+    public async Task<IActionResult> OnPostDesactivarAsync(int id)
+    {
+        var pelicula = await _context.Peliculas.FindAsync(id);
+        if (pelicula != null && pelicula.Activa == true)
+        {
+            pelicula.Activa = false;
+            await _context.SaveChangesAsync();
+        }
+
+        return RedirectToPage(); // Refresca la cartelera
     }
 }
