@@ -1,0 +1,79 @@
+@page "{id?}"
+@model Proyecto_Cine.Pages.Admin.ModificarFuncionesAdminModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Modificar/Agregar Función";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/Sitio.css" />
+</head>
+<body>
+
+<a asp-page="/Admin/FuncionesAdmin" class="back-link">← Regresar</a>
+
+<div class="form-container">
+    <div class="form-card">
+        <h2>Agregar / Editar Función</h2>
+
+        <form method="post" class="form-box">
+            <label>Película:</label>
+            <select asp-for="Funcion.PeliculaId">
+                <option value="">Selecciona una película</option>
+                @foreach (var p in Model.Peliculas)
+                {
+                    <option value="@p.Id">@p.Titulo</option>
+                }
+            </select>
+
+            <label>Sala:</label>
+            <select asp-for="Funcion.SalaId">
+                <option value="">Selecciona una sala</option>
+                @foreach (var s in Model.Salas)
+                {
+                    <option value="@s.Id">@s.Nombre</option>
+                }
+            </select>
+
+            <label>Fecha:</label>
+            <input asp-for="Funcion.Fecha" type="date" />
+
+            <label>Hora de inicio:</label>
+            <input asp-for="Funcion.HoraInicio" type="time" />
+
+            <label>Hora de fin:</label>
+            <input asp-for="Funcion.HoraFin" type="time" />
+
+            <label>Idioma:</label>
+            <select asp-for="Funcion.Idioma">
+                <option value="">Selecciona un idioma</option>
+                <option value="Español">Español</option>
+                <option value="Subtitulada">Subtitulada</option>
+            </select>
+
+            <label>Formato:</label>
+            <select asp-for="Funcion.Formato">
+                <option value="">Selecciona un formato</option>
+                <option value="2D">2D</option>
+                <option value="3D">3D</option>
+                <option value="IMAX">IMAX</option>
+            </select>
+
+            <label>Precio:</label>
+            <input asp-for="Funcion.Precio" type="number" step="0.01" placeholder="Ej: 100.00" />
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Guardar</button>
+                <a asp-page="/Admin/FuncionesAdmin" class="btn">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

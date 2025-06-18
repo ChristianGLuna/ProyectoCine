@@ -29,7 +29,8 @@ public partial class Funcione
 
     public virtual ICollection<AsientosFuncion> AsientosFuncions { get; set; } = new List<AsientosFuncion>();
 
-    public virtual Pelicula? Pelicula { get; set; }
+    public virtual Pelicula Pelicula { get; set; } = null!;
+
 
     public virtual ICollection<PreciosFuncion> PreciosFuncions { get; set; } = new List<PreciosFuncion>();
 
