@@ -10,17 +10,20 @@ builder.Services.AddDbContext<SarmiMovieDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
-// ✅ AGREGAR servicios ANTES de builder.Build()
+// ✅ Servicios Razor Pages
 builder.Services.AddRazorPages();
 
+// ✅ Autenticación con cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Login";
-        options.AccessDeniedPath = "/AccesoDenegado";
-        options.ExpireTimeSpan = TimeSpan.FromHours(2);
+        options.LoginPath = "/Login";                    // Redirigir si no ha iniciado sesión
+        options.AccessDeniedPath = "/AccesoDenegado";    // Redirigir si no tiene permiso (rol)
+        options.ExpireTimeSpan = TimeSpan.FromHours(2);  // Tiempo de sesión
+        options.SlidingExpiration = true;                // Renovar si sigue activo
     });
 
+// ✅ Autorización basada en roles o políticas (si las agregas luego)
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -33,14 +36,13 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); // Asegúrate de tener esto si usas wwwroot
-
+app.UseStaticFiles();      // Necesario para cargar CSS, JS, imágenes desde wwwroot
 app.UseRouting();
 
-app.UseAuthentication(); // Importante: primero autenticación
-app.UseAuthorization();
+app.UseAuthentication();   // Primero autenticación
+app.UseAuthorization();    // Luego autorización (dependiente de la anterior)
 
-// 📄 Rutas Razor Pages
+// 📄 Activar Razor Pages
 app.MapRazorPages();
 
 app.Run();

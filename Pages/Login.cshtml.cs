@@ -2,9 +2,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Proyecto_Cine.Models;
-using Proyecto_Cine.Models.ViewModels;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -21,52 +20,83 @@ namespace Proyecto_Cine.Pages
         }
 
         [BindProperty]
-        public LoginViewModel LoginData { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
-        public void OnGet() { }
+        [BindProperty]
+        [Required]
+        public string Password { get; set; }
+
+        public string MensajeError { get; set; }
+
+        public string HashDebug { get; set; }
+        public string HashGuardado { get; set; }
+        public bool HashMatch { get; set; }
+
+        public IActionResult OnGet()
+        {
+            // Si ya está autenticado, redirige directamente al panel
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Admin/PanelAdmin");
+            }
+
+            return Page();
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
                 return Page();
 
-            string correo = LoginData.Correo.Trim().ToLower();
-            string hash = CalcularHash(LoginData.Contrasena);
-
-            // LOG temporal
-            Console.WriteLine($"[LOGIN] Correo: {correo}");
-            Console.WriteLine($"[LOGIN] Hash generado: {hash}");
-
-
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(u =>
-                    u.Email!.ToLower() == correo &&
-                    u.ContrasenaHash == hash &&
-                    u.Activo == true);
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == Email.ToLower());
 
             if (usuario == null)
             {
-                ModelState.AddModelError(string.Empty, "Correo o contraseña incorrectos.");
+                MensajeError = "El correo no está registrado.";
                 return Page();
             }
 
-            // Crear claims de identidad
+            var hashIngresado = CalcularHash(Password);
+            HashDebug = hashIngresado;
+            HashGuardado = usuario.ContrasenaHash;
+            HashMatch = hashIngresado == usuario.ContrasenaHash;
+
+            if (!HashMatch)
+            {
+                MensajeError = "Contraseña incorrecta.";
+                return Page();
+            }
+
+            if (!usuario.Activo.HasValue || !usuario.Activo.Value)
+            {
+                MensajeError = "Tu cuenta está inactiva.";
+                return Page();
+            }
+
+            if (usuario.Rol.ToLower() != "admin")
+            {
+                MensajeError = "Solo los administradores pueden acceder por ahora.";
+                return Page();
+            }
+
+            // ✅ Crear claims para el usuario
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, usuario.Email),
+                new Claim(ClaimTypes.Name, usuario.Nombre ?? usuario.Email),
+                new Claim(ClaimTypes.Email, usuario.Email),
                 new Claim(ClaimTypes.Role, usuario.Rol)
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
 
-            // Firmar la cookie
+            // ✅ Guardar la cookie de sesión
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-            // Redirigir según rol
-            return usuario.Rol == "Admin"
-                ? RedirectToPage("/PanelAdmin")
-                : RedirectToPage("/Home");
+            // ✅ Redirigir al panel de administración
+            return RedirectToPage("/Admin/PanelAdmin");
         }
 
         private string CalcularHash(string input)

@@ -1,0 +1,63 @@
+@page
+@model Proyecto_Cine.Pages.Admin.SalasAdminModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Salas - Admin";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/Sitio.css" />
+</head>
+<body>
+
+<div class="admin-panel">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="~/images/logo.svg" alt="Logo" class="logo-img" />
+        </div>
+        <h2>Administrador</h2>
+        <a href="/Admin/PanelAdmin" class="btn">Incio Admin</a>
+        <a href="/Admin/CarteleraAdmin" class="btn">Películas</a>
+        <a href="/Admin/FuncionesAdmin" class="btn">Funciones</a>
+        <a href="/Admin/SalasAdmin" class="btn">Salas</a>
+    </aside>
+
+    <main class="content">
+        <h2>Salas</h2>
+        <p>Gestión de salas de cine</p>
+
+        <div class="toolbar">
+            <a class="btn" asp-page="/Admin/ModificarAgregarSalasAdmin">+ Añadir</a>
+
+        </div>
+
+        <div class="sala-grid">
+            @foreach (var sala in Model.Salas)
+            {
+                <div class="sala-card">
+                    <h4>@sala.Nombre - @sala.Tipo</h4>
+                    <p>Capacidad: @sala.Capacidad</p>
+                    <p>Sucursal: @sala.IdSucursalNavigation?.Nombre</p>
+
+                    <div class="card-actions">
+                        <a class="btn" asp-page="/Admin/ModificarAgregarSalasAdmin" asp-route-id="@sala.Id">Modificar</a>
+                    </div>
+                    <div class="card-actions">
+                        <form method="post" asp-page-handler="Suspender" asp-route-id="@sala.Id">
+                        <button type="submit" class="btn">Suspender</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            }
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
