@@ -23,9 +23,6 @@ public partial class Usuario
 
     public DateTime? FechaCreacion { get; set; }
 
-    public string? TokenRecuperacion { get; set; }
-    public DateTime? TokenExpira { get; set; }
-
     public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 
     public virtual ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
