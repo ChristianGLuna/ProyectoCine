@@ -21,7 +21,7 @@
             <img src="~/images/logo.svg" alt="Logo" class="logo-img" />
         </div>
         <h2>Administrador</h2>
-        <a href="/Admin/PanelAdmin" class="btn">Incio Admin</a>
+        <a href="/Admin/PanelAdmin" class="btn">Inicio Admin</a>
         <a href="/Admin/CarteleraAdmin" class="btn">Películas</a>
         <a href="/Admin/FuncionesAdmin" class="btn">Funciones</a>
         <a href="/Admin/SalasAdmin" class="btn">Salas</a>
@@ -38,21 +38,23 @@
         </form>
 
         <div class="movie-grid">
-            @foreach (var pelicula in Model.Peliculas)
-            {
-                <div class="movie-card">
-                    <img src="@pelicula.Imagen" alt="@pelicula.Titulo" />
+        @foreach (var pelicula in Model.Peliculas)
+        {
+            <div class="movie-card">
+                <span class="badge badge-@pelicula.Clasificacion?.ToLower()">@pelicula.Clasificacion</span>
 
-                    <form method="post" asp-page-handler="Desactivar" asp-route-id="@pelicula.Id">
-                        <button type="submit" class="btn-remove">Quitar</button>
-                    </form>
+                <img src="@pelicula.Imagen" alt="@pelicula.Titulo" class="movie-img" />
 
-                    <h4>@pelicula.Titulo</h4>
-                    <span class="badge">@pelicula.Clasificacion</span>
-                    <a class="edit-link" asp-page="ModificarPeliculaAdmin" asp-route-id="@pelicula.Id">Modificar</a>
-                </div>
-            }
-        </div>
+                <h4 class="titulo">@pelicula.Titulo</h4>
+
+                <a class="btn-accion btn-modificar" asp-page="ModificarPeliculaAdmin" asp-route-id="@pelicula.Id">Modificar</a>
+
+                <a href="javascript:void(0);" onclick="document.getElementById('form-@pelicula.Id').submit();" class="btn-accion btn-quitar">Quitar</a>
+                <form id="form-@pelicula.Id" method="post" asp-page-handler="Desactivar" asp-route-id="@pelicula.Id" style="display:none;"></form>
+
+            </div>
+        }
+    </div>
     </main>
 </div>
 

@@ -1,8 +1,10 @@
 @page "{id?}"
-@model ModificarPeliculaAdminModel
+@model Proyecto_Cine.Pages.Admin.ModificarPeliculaAdminModel
 @{
     ViewData["Title"] = Model.EsNueva ? "Añadir Película" : "Modificar Película";
     Layout = null;
+    var imagenCargada = !string.IsNullOrEmpty(Model.Pelicula.Imagen);
+    var rutaPlaceholder = "/images/iconos/placeholder-image.png"; // Debes tener esta imagen en wwwroot/images/
 }
 
 <!DOCTYPE html>
@@ -15,11 +17,17 @@
 </head>
 <body>
 
-<a asp-page="CarteleraAdmin" class="back-button">← Regresar</a>
+<a asp-page="CarteleraAdmin" class="back-button">Regresar</a>
 
 <div class="container">
     <div class="image-section">
-        <img id="preview" src="@Model.Pelicula.Imagen" alt="Vista previa" />
+        <div class="image-preview-box">
+            <img id="preview" src="@(imagenCargada ? Model.Pelicula.Imagen : rutaPlaceholder)" alt="Vista previa" />
+        </div>
+        <label class="upload-label">
+            <span>Subir imagen</span>
+            <input type="file" name="ArchivoImagen" accept="image/*" onchange="previewImage(this)" hidden />
+        </label>
     </div>
 
     <form method="post" enctype="multipart/form-data" class="form-card">
@@ -49,11 +57,18 @@
         <label>Sinopsis</label>
         <textarea asp-for="Pelicula.Sinopsis"></textarea>
 
-        <!-- Subida de imagen real -->
-        <label>Imagen:</label>
-        <input type="file" name="ArchivoImagen" accept="image/*" onchange="previewImage(this)" />
+        <label>Idiomas disponibles</label>
+        <div class="idiomas-group">
+            @foreach (var idioma in new[] { "Español", "Inglés", "Francés", "Subtitulado" })
+            {
+                <label>
+                    <input type="checkbox" name="IdiomasSeleccionados" value="@idioma"
+                        @(Model.Pelicula.Idioma != null && Model.Pelicula.Idioma.Split(',').Contains(idioma) ? "checked" : "") />
+                    <span>@idioma</span>
+                </label>
+            }
+        </div>
 
-        <!-- Valores ocultos -->
         <input type="hidden" asp-for="Pelicula.Activa" />
         <input type="hidden" asp-for="Pelicula.Imagen" />
 

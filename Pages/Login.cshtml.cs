@@ -36,10 +36,13 @@ namespace Proyecto_Cine.Pages
 
         public IActionResult OnGet()
         {
-            // Si ya está autenticado, redirige directamente al panel
+            // Si ya está autenticado, redirige según el rol
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToPage("/Admin/PanelAdmin");
+                if (User.IsInRole("Admin"))
+                    return RedirectToPage("/Admin/PanelAdmin");
+                else if (User.IsInRole("Cliente"))
+                    return RedirectToPage("/Cliente/Home");
             }
 
             return Page();
@@ -75,12 +78,6 @@ namespace Proyecto_Cine.Pages
                 return Page();
             }
 
-            if (usuario.Rol.ToLower() != "admin")
-            {
-                MensajeError = "Solo los administradores pueden acceder por ahora.";
-                return Page();
-            }
-
             // ✅ Crear claims para el usuario
             var claims = new List<Claim>
             {
@@ -95,8 +92,20 @@ namespace Proyecto_Cine.Pages
             // ✅ Guardar la cookie de sesión
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-            // ✅ Redirigir al panel de administración
-            return RedirectToPage("/Admin/PanelAdmin");
+            // ✅ Redirigir según el rol
+            if (usuario.Rol.ToLower() == "admin")
+            {
+                return RedirectToPage("/Admin/PanelAdmin");
+            }
+            else if (usuario.Rol.ToLower() == "cliente")
+            {
+                return RedirectToPage("/Cliente/Home");
+            }
+            else
+            {
+                MensajeError = "Rol de usuario no reconocido.";
+                return Page();
+            }
         }
 
         private string CalcularHash(string input)

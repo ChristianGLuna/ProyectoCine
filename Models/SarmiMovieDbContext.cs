@@ -259,9 +259,6 @@ public partial class SarmiMovieDbContext : DbContext
             entity.Property(e => e.Clasificacion)
                 .HasMaxLength(10)
                 .HasColumnName("clasificacion");
-            entity.Property(e => e.Descripcion)
-                .HasColumnType("text")
-                .HasColumnName("descripcion");
             entity.Property(e => e.Duracion).HasColumnName("duracion");
             entity.Property(e => e.Genero)
                 .HasMaxLength(100)
