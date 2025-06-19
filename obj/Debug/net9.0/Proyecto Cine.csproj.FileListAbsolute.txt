@@ -433,7 +433,6 @@ C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.source
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\scopedcss\bundle\Proyecto Cine.styles.css
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\scopedcss\projectbundle\Proyecto Cine.bundle.scp.css
-C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\h0h6k8n8mg-6uu88np9l7.gz
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\dc2mko6tel-i1er93ou9i.gz
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\7ncsbchxkx-mzi84g438f.gz
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\miv5v9l9fc-61n19gt1b8.gz
@@ -515,9 +514,13 @@ C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\refint\Proyecto Cine
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.pdb
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\Proyecto Cine.genruntimeconfig.cache
 C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\ref\Proyecto Cine.dll
-C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\qr7jbl36ee-saazgaog7j.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\j6fog3yoxb-q77drdypne.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\dc2mko6tel-i1er93ou9i.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\h0h6k8n8mg-3nlg0mq8e2.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\s8r94ccka2-9nykkzmkvy.gz
 C:\Users\gaelr\Proyecto Cine\obj\Debug\net9.0\compressed\qr7jbl36ee-ndaboyx86r.gz
+C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\h0h6k8n8mg-0tvapkgmv5.gz
+C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\j6fog3yoxb-q77drdypne.gz
+C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\s8r94ccka2-6u801tdovh.gz
+C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\qr7jbl36ee-88mb66pjmk.gz
+C:\Users\Noel Antonio\Desktop\ProyectoCine\obj\Debug\net9.0\compressed\jx6n6zf2n7-yf7ipji3y8.gz

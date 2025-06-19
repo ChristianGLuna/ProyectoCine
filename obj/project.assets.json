@@ -2300,19 +2300,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gaelr\\.nuget\\packages\\": {}
+    "C:\\Users\\Noel Antonio\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gaelr\\Proyecto Cine\\Proyecto Cine.csproj",
+      "projectUniqueName": "C:\\Users\\Noel Antonio\\Desktop\\ProyectoCine\\Proyecto Cine.csproj",
       "projectName": "Proyecto Cine",
-      "projectPath": "C:\\Users\\gaelr\\Proyecto Cine\\Proyecto Cine.csproj",
-      "packagesPath": "C:\\Users\\gaelr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gaelr\\Proyecto Cine\\obj\\",
+      "projectPath": "C:\\Users\\Noel Antonio\\Desktop\\ProyectoCine\\Proyecto Cine.csproj",
+      "packagesPath": "C:\\Users\\Noel Antonio\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Noel Antonio\\Desktop\\ProyectoCine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gaelr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Noel Antonio\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -2336,7 +2336,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -2382,7 +2382,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
