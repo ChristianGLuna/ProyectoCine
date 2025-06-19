@@ -1,9 +1,11 @@
 @page
 @model Proyecto_Cine.Pages.Cliente.ResumenPagoModel
 @{
-    Layout = null;
+Layout = null;
 }
+
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -14,105 +16,84 @@
 <body class="asientos-body">
     <div class="asientos-container">
 
-        <!-- LOGO -->
-        <div class="logo-header">
-            <a href="/Cliente/Home"><img src="~/images/logo.svg" alt="Logo" /></a>
-        </div>
-
-        <!-- HEADER -->
-        <header class="asientos-header">
-            <a href="/Cliente/SeleccionAsientos" class="btn-regresar">⟵ Regresar</a>
-            <div>
-                <h1 class="titulo-asientos">Resumen</h1>
-                <p>Resumen de la compra</p>
-                <nav class="breadcrumb">
-                    <a href="#">Cartelera</a> ▸
-                    <a href="#">Funciones</a> ▸
-                    <a href="#">Boletos</a> ▸
-                    <a href="#">Asientos</a> ▸
-                    <strong>Resumen</strong>
-                </nav>
-            </div>
-        </header>
-
-        <!-- CUERPO -->
-        <main class="resumen-grid">
-            <!-- DETALLES -->
-            <section class="resumen-funcion resumen-blanco">
-                <img src="/images/poster.png" alt="Thunderbolts" class="poster" />
-                <h3><span class="etiqueta-b">B</span> Thunderbolts*</h3>
-                <p><small><em>Duración: 127 min</em></small></p>
-                <p><strong>Cine:</strong> Cine Plaza Museo</p>
-                <p><strong>Función:</strong> Hoy, 12:00 pm<br> Sala normal</p>
-                <p><strong>Boletos:</strong> 3 adultos, 1 niño(s)</p>
-                <p><strong>Asientos:</strong> G1, G2, G3, G4</p>
-                <p class="resumen-total"><strong>Total:</strong> $ 277.00</p>
-                <hr>
-                <p><strong>Sinopsis:</strong><br>
-                    Thunderbolts reúne a un equipo de antihéroes marginados...
-                </p>
-            </section>
-
-            <!-- MÉTODO DE PAGO -->
-            <section class="resumen-metodo">
-                <h3>Método de Pago</h3>
-                <form>
-                    <label><input type="radio" name="metodo" onclick="mostrarPopup('paypalModal')"> PayPal</label>
-                    <label><input type="radio" name="metodo" onclick="mostrarPopup('tarjetaModal')"> Tarjeta de débito</label>
-                </form>
-            </section>
-        </main>
-
-        <!-- BOTÓN -->
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="#" class="btn-continuar">Pagar</a>
-        </div>
+```
+    <!-- LOGO -->
+    <div class="logo-header">
+        <a href="/Cliente/Home"><img src="~/images/logo.svg" alt="Logo" /></a>
     </div>
 
-    <!-- MODAL PAYPAL -->
-    <div class="modal" id="paypalModal">
-        <div class="modal-content">
-            <span class="cerrar" onclick="cerrarPopup('paypalModal')">&times;</span>
-            <h2>PayPal</h2>
-            <label>Correo electrónico</label>
-            <input type="email" placeholder="correo@ejemplo.com" />
-            <label>Contraseña</label>
-            <input type="password" placeholder="*********" />
-            <button class="btn-continuar">Pagar</button>
+    <!-- HEADER -->
+    <header class="asientos-header">
+        <a href="/Cliente/SeleccionAsientos?id=@Model.Funcion?.Id" class="btn-regresar">⟵ Regresar</a>
+        <div>
+            <h1 class="titulo-asientos">Resumen</h1>
+            <p>Resumen de la compra</p>
+            <nav class="breadcrumb">
+                <a href="#">Cartelera</a> ▸
+                <a href="#">Funciones</a> ▸
+                <a href="#">Boletos</a> ▸
+                <a href="#">Asientos</a> ▸
+                <strong>Resumen</strong>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <!-- MODAL TARJETA -->
-    <div class="modal" id="tarjetaModal">
-        <div class="modal-content">
-            <span class="cerrar" onclick="cerrarPopup('tarjetaModal')">&times;</span>
-            <h2>Tarjeta crédito/débito</h2>
-            <label>Número de tarjeta</label>
-            <input type="text" placeholder="0000 0000 0000 0000" />
-            <label>Nombre del titular</label>
-            <input type="text" placeholder="Juan Pérez" />
-            <div style="display: flex; gap: 1rem;">
-                <div style="flex:1">
-                    <label>Vencimiento</label>
-                    <input type="text" placeholder="MM/AA" />
-                </div>
-                <div style="flex:1">
-                    <label>CVV</label>
-                    <input type="text" placeholder="123" />
-                </div>
-            </div>
-            <button class="btn-continuar">pagar</button>
-        </div>
-    </div>
+    <!-- CUERPO -->
+    <main class="resumen-grid">
+        <!-- DETALLES -->
+        <section class="resumen-funcion resumen-blanco">
+            <img src="@Model.Pelicula?.Imagen" alt="@Model.Pelicula?.Titulo" class="poster" />
+            <h3><span class="etiqueta-b">@Model.Pelicula?.Clasificacion</span> @Model.Pelicula?.Titulo</h3>
+            <p><small><em>Duración: @Model.Pelicula?.Duracion min</em></small></p>
+            <p><strong>Cine:</strong> @Model.NombreSucursal</p>
+            <p><strong>Función:</strong> @Model.FechaFormateada, @Model.HoraFormateada<br> Sala @Model.NombreSala</p>
+            <p><strong>Boletos:</strong> @Model.BoletosDescripcionInput</p>
+            <p><strong>Asientos:</strong> @Model.AsientosSeleccionados</p>
+            <p class="resumen-total"><strong>Total:</strong> $ @Model.TotalInput</p>
+            <hr>
+            <p><strong>Sinopsis:</strong><br>
+                @Model.Pelicula?.Sinopsis
+            </p>
+        </section>
 
-    <!-- JS -->
-    <script>
-        function mostrarPopup(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-        function cerrarPopup(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-    </script>
+        <!-- MÉTODO DE PAGO -->
+        <section class="resumen-metodo">
+            <h3>Método de Pago</h3>
+            <form method="post">
+                <input type="hidden" name="idFuncion" value="@Model.idFuncion" />
+                <input type="hidden" name="AsientosSeleccionados" value="@Model.AsientosSeleccionados" />
+                <input type="hidden" name="BoletosDescripcionInput" value="@Model.BoletosDescripcionInput" />
+                <input type="hidden" name="TotalInput" value="@Model.TotalInput" />
+
+                <label><input type="radio" name="MetodoPago" value="PayPal" onclick="mostrarPopup('paypalModal')"> PayPal</label>
+                <label><input type="radio" name="MetodoPago" value="Tarjeta" onclick="mostrarPopup('tarjetaModal')"> Tarjeta de débito</label>
+            </form>
+        </section>
+    </main>
+
+    <!-- BOTÓN -->
+    <div style="text-align: center; margin-top: 2rem;">
+        <form method="post">
+            <input type="hidden" name="idFuncion" value="@Model.idFuncion" />
+            <input type="hidden" name="AsientosSeleccionados" value="@Model.AsientosSeleccionados" />
+            <input type="hidden" name="BoletosDescripcionInput" value="@Model.BoletosDescripcionInput" />
+            <input type="hidden" name="TotalInput" value="@Model.TotalInput" />
+            <input type="hidden" name="MetodoPago" value="@Model.MetodoPago" />
+            <button type="submit" class="btn-continuar">Pagar</button>
+        </form>
+    </div>
+</div>
+
+<!-- JS -->
+<script>
+    function mostrarPopup(id) {
+        document.getElementById(id).style.display = 'flex';
+    }
+    function cerrarPopup(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+</script>
+```
+
 </body>
 </html>

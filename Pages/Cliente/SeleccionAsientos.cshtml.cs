@@ -25,12 +25,10 @@ namespace Proyecto_Cine.Pages.Cliente
         public string FechaFormateada => Funcion?.Fecha?.ToString("dd/MM/yyyy") ?? "";
         public string HoraFormateada => Funcion?.HoraInicio?.ToString("HH:mm") ?? "";
 
-
-
-
-
-
         public Dictionary<string, List<AsientoVista>> MatrizAsientos { get; set; } = new();
+
+        [BindProperty]
+        public List<int> AsientosSeleccionados { get; set; } = new();
 
         public class AsientoVista
         {
@@ -90,6 +88,20 @@ namespace Proyecto_Cine.Pages.Cliente
             }
 
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (AsientosSeleccionados == null || !AsientosSeleccionados.Any())
+            {
+                ModelState.AddModelError(string.Empty, "Debe seleccionar al menos un asiento.");
+                return Page();
+            }
+
+            TempData["FuncionId"] = idFuncion;
+            TempData["AsientosSeleccionados"] = string.Join(",", AsientosSeleccionados);
+
+            return RedirectToPage("/Cliente/ResumenPago");
         }
     }
 }
