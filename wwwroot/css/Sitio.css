@@ -249,6 +249,7 @@ a.btn {
     text-decoration: underline;
 }
 
+
 @media (max-width: 768px) {
     .admin-panel {
         flex-direction: column;
@@ -266,4 +267,5 @@ a.btn {
     .content {
         padding: 1rem;
     }
+    
 }
