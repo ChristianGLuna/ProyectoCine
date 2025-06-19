@@ -70,7 +70,7 @@
                         <th>Fin</th>
                         <th>Idioma</th>
                         <th>Formato</th>
-                        <th>Precio</th>
+                        @* <th>Precio</th> *@
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -85,7 +85,7 @@
                             <td>@f.HoraFin</td>
                             <td>@f.Idioma</td>
                             <td>@f.Formato</td>
-                            <td>$@f.Precio</td>
+                            @* <td>$@f.Precio</td> *@
 
                             <td>
                                 <a class="btn" asp-page="/Admin/ModificarFuncionesAdmin" asp-route-id="@f.Id">Editar</a>
