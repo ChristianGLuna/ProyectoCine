@@ -70,58 +70,116 @@ body {
     border-radius: 4px;
     border: none;
     background-color: deepskyblue;
-    color: black;
+    color: white;
     cursor: pointer;
     text-decoration: none;
     font-weight: bold;
 }
 
+/* TARJETAS DE PELÍCULA */
+
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .movie-card {
-    background: #333;
+    background-color: #2a2a2a;
+    border-radius: 10px;
     padding: 1rem;
-    border-radius: 8px;
     text-align: center;
-    position: relative;
-}
-
-.movie-card img {
-    width: 100%;
-    border-radius: 8px;
-    height: auto;
-}
-
-.btn-remove {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #b00;
-    color: white;
-    padding: 0.3rem 0.6rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .badge {
-    background: gold;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
     display: inline-block;
-    padding: 0.3rem 0.5rem;
-    border-radius: 4px;
-    margin-top: 0.5rem;
 }
 
-.edit-link {
-    display: block;
-    margin-top: 0.5rem;
-    color: deepskyblue;
-    text-decoration: underline;
+.badge-a {
+    background-color: #4caf50;
+    color: white;
 }
+
+.badge-b {
+    background-color: #ffeb3b;
+    color: black;
+}
+
+.badge-c {
+    background-color: #f44336;
+    color: white;
+}
+
+.movie-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.titulo {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0 1rem;
+    color: #fff;
+}
+
+/* BOTONES DE ACCIÓN UNIFORMES */
+
+.btn-accion {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 0;
+    margin-top: 0.4rem;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.movie-card a.btn-accion,
+.movie-card form .btn-accion {
+    width: 100%;
+    display: inline-block;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-modificar {
+    background-color: #00bfff;
+    color: white;
+}
+
+.btn-modificar:hover {
+    background-color: #009acd;
+}
+
+.btn-quitar {
+    background-color: #8b0000;
+    color: white;
+}
+
+.btn-quitar:hover {
+    background-color: #a30000;
+}
+
+/* RESPONSIVE */
 
 @media (max-width: 768px) {
     .admin-panel {
@@ -140,7 +198,4 @@ body {
     .content {
         padding: 1rem;
     }
-    
-
-
 }

@@ -157,9 +157,6 @@ public partial class SarmiMovieDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("idioma");
             entity.Property(e => e.PeliculaId).HasColumnName("pelicula_id");
-            entity.Property(e => e.Precio)
-                .HasPrecision(10, 2)
-                .HasColumnName("precio");
             entity.Property(e => e.SalaId).HasColumnName("sala_id");
             entity.Property(e => e.SucursalId).HasColumnName("sucursal_id");
 
@@ -259,9 +256,6 @@ public partial class SarmiMovieDbContext : DbContext
             entity.Property(e => e.Clasificacion)
                 .HasMaxLength(10)
                 .HasColumnName("clasificacion");
-            entity.Property(e => e.Descripcion)
-                .HasColumnType("text")
-                .HasColumnName("descripcion");
             entity.Property(e => e.Duracion).HasColumnName("duracion");
             entity.Property(e => e.Genero)
                 .HasMaxLength(100)

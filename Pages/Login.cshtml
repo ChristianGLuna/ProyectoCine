@@ -1,8 +1,12 @@
 @page
 @model Proyecto_Cine.Pages.LoginModel
 @{
+    Layout = null;
     ViewData["Title"] = "Iniciar Sesión";
 }
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 <div class="login-container">
     <form method="post">
@@ -35,12 +39,12 @@
 
         <div class="form-buttons">
             <button type="submit" class="btn btn-primary">Ingresar</button>
-            <a asp-page="/home" class="btn btn-secondary">Invitado</a>
+            <a asp-page="/Cliente/home" class="btn btn-secondary">Invitado</a>
         </div>
 
         <div class="form-links">
             <a asp-page="/RecuperarContrasena">¿Olvidaste tu contraseña?</a><br />
-            <span>¿No tienes cuenta? <a asp-page="/Registro">Crear Cuenta</a></span>
+            <span>¿No tienes cuenta? <a asp-page="/Cliente/Registro">Crear Cuenta</a></span>
         </div>
 
         <div style="color:red;">

@@ -2,7 +2,11 @@
 @model HomeModel
 @{
     ViewData["Title"] = "Inicio";
+    Layout = null;
 }
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/PanelAdmin.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 <div class="text-white bg-dark">
     <div class="container py-4">
@@ -44,9 +48,18 @@
             </div>
 
             <!-- Botón Usuario con imagen -->
-            <button class="btn p-0 border-0 bg-transparent">
-                <img src="~/images/iconos/user.png" alt="Usuario" style="height: 60px; width: 60px; border-radius: 50%;">
-            </button>
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <form method="post" asp-page="/Logout" class="d-flex align-items-center m-0">
+                    <a asp-page="/Logout" class="logout-btn">Cerrar sesión</a>
+                </form>
+            }
+            else
+            {
+                <a href="/Login" class="btn p-0 border-0 bg-transparent" title="Iniciar sesión">
+                    <img src="~/images/iconos/user.png" alt="Iniciar sesión" style="height: 60px; width: 60px; border-radius: 50%;">
+                </a>
+            }                          
         </div>
     </div>
 </div>

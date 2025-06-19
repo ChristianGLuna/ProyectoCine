@@ -4,6 +4,8 @@ using Proyecto_Cine.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Proyecto_Cine.Pages.Admin;
 
@@ -22,7 +24,10 @@ public class ModificarPeliculaAdminModel : PageModel
     public Pelicula Pelicula { get; set; } = new();
 
     [BindProperty]
-    public IFormFile? ArchivoImagen { get; set; }  // Para recibir la imagen
+    public List<string> IdiomasSeleccionados { get; set; } = new();
+
+    [BindProperty]
+    public IFormFile? ArchivoImagen { get; set; }
 
     public bool EsNueva => Pelicula.Id == 0;
 
@@ -37,6 +42,8 @@ public class ModificarPeliculaAdminModel : PageModel
             Pelicula = _context.Peliculas.FirstOrDefault(p => p.Id == id);
             if (Pelicula == null)
                 return NotFound();
+
+            IdiomasSeleccionados = Pelicula.Idioma?.Split(',').ToList() ?? new List<string>();
         }
 
         return Page();
@@ -65,6 +72,7 @@ public class ModificarPeliculaAdminModel : PageModel
         if (Pelicula.Id == 0)
         {
             Pelicula.Activa = true;
+            Pelicula.Idioma = string.Join(",", IdiomasSeleccionados);
             if (rutaImagenNueva != null)
                 Pelicula.Imagen = rutaImagenNueva;
 
@@ -79,11 +87,10 @@ public class ModificarPeliculaAdminModel : PageModel
             existente.Genero = Pelicula.Genero;
             existente.Duracion = Pelicula.Duracion;
             existente.Clasificacion = Pelicula.Clasificacion;
-            existente.Idioma = Pelicula.Idioma;
+            existente.Idioma = string.Join(",", IdiomasSeleccionados);
             existente.Sinopsis = Pelicula.Sinopsis;
             existente.Activa = Pelicula.Activa;
 
-            // Solo cambia la imagen si subieron una nueva
             if (rutaImagenNueva != null)
                 existente.Imagen = rutaImagenNueva;
         }

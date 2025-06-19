@@ -19,8 +19,6 @@ public partial class Funcione
 
     public TimeOnly? HoraFin { get; set; }
 
-    public decimal? Precio { get; set; }
-
     public string? Idioma { get; set; }
 
     public string? Formato { get; set; }
