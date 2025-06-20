@@ -77,7 +77,7 @@ namespace Proyecto_Cine.Pages.Cliente
                         if (asiento != null)
                         {
                             var relacion = await _context.AsientosFuncions
-                                .FirstOrDefaultAsync(af => af.FuncionId == Funcion.Id && af.Asiento == fila + numero);
+                                .FirstOrDefaultAsync(af => af.FuncionId == Funcion.Id && (af.Asiento.Fila + af.Asiento.Numero) == (fila + numero));
 
                             if (relacion != null)
                             {
