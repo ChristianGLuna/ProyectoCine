@@ -12,6 +12,7 @@ builder.Services.AddDbContext<SarmiMovieDbContext>(options =>
 
 // ✅ Servicios Razor Pages
 builder.Services.AddRazorPages();
+builder.Services.AddControllers(); // Habilita los controladores API
 
 // ✅ Autenticación con cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -44,5 +45,7 @@ app.UseAuthorization();    // Luego autorización (dependiente de la anterior)
 
 // 📄 Activar Razor Pages
 app.MapRazorPages();
+
+app.MapControllers(); // Habilita rutas API como /api/funciones/{id}/precios
 
 app.Run();

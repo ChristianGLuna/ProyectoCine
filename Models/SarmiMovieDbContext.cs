@@ -78,16 +78,13 @@ public partial class SarmiMovieDbContext : DbContext
 
         modelBuilder.Entity<AsientosFuncion>(entity =>
         {
-            entity.HasKey(e => new { e.FuncionId, e.Asiento })
-                .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+            entity.HasKey(e => new { e.FuncionId, e.AsientoId })
+                .HasName("PRIMARY");
 
             entity.ToTable("asientos_funcion");
 
             entity.Property(e => e.FuncionId).HasColumnName("funcion_id");
-            entity.Property(e => e.Asiento)
-                .HasMaxLength(10)
-                .HasColumnName("asiento");
+            entity.Property(e => e.AsientoId).HasColumnName("asiento_id");
             entity.Property(e => e.Disponible)
                 .HasDefaultValueSql("'1'")
                 .HasColumnName("disponible");
@@ -96,6 +93,11 @@ public partial class SarmiMovieDbContext : DbContext
                 .HasForeignKey(d => d.FuncionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("asientos_funcion_ibfk_1");
+
+            entity.HasOne(d => d.Asiento).WithMany()
+                .HasForeignKey(d => d.AsientoId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("asientos_funcion_ibfk_asiento");
         });
 
         modelBuilder.Entity<Entrada>(entity =>
@@ -105,13 +107,11 @@ public partial class SarmiMovieDbContext : DbContext
             entity.ToTable("entradas");
 
             entity.HasIndex(e => e.ReservaId, "reserva_id");
-
             entity.HasIndex(e => e.TipoBoletoId, "tipo_boleto_id");
+            entity.HasIndex(e => e.AsientoId, "asiento_id");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Asiento)
-                .HasMaxLength(10)
-                .HasColumnName("asiento");
+            entity.Property(e => e.AsientoId).HasColumnName("asiento_id");
             entity.Property(e => e.PrecioUnitario)
                 .HasPrecision(6, 2)
                 .HasColumnName("precio_unitario");
@@ -125,6 +125,10 @@ public partial class SarmiMovieDbContext : DbContext
             entity.HasOne(d => d.TipoBoleto).WithMany(p => p.Entrada)
                 .HasForeignKey(d => d.TipoBoletoId)
                 .HasConstraintName("entradas_ibfk_2");
+
+            entity.HasOne(d => d.Asiento).WithMany()
+                .HasForeignKey(d => d.AsientoId)
+                .HasConstraintName("entradas_ibfk_asiento");
         });
 
         modelBuilder.Entity<Funcione>(entity =>
