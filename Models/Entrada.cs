@@ -11,7 +11,8 @@ public partial class Entrada
 
     public int? TipoBoletoId { get; set; }
 
-    public string? Asiento { get; set; }
+    public int? AsientoId { get; set; }
+    public virtual Asiento? Asiento { get; set; }
 
     public decimal? PrecioUnitario { get; set; }
 

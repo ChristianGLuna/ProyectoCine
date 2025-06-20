@@ -10,10 +10,27 @@ a {
     color: inherit;
 }
 
-.btn-regresar {
-    display: inline-block;
-    margin: 1rem;
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1rem;
+    background-color: deepskyblue;
     color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    width: fit-content;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #00a8ff;
+}
+
+.back-button::before {
+    content: "🡸";
+    font-size: 1.2rem;
 }
 
 .encabezado {

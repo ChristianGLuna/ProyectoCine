@@ -1,5 +1,11 @@
 @page
 @model FuncionesModel
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
 @{
     ViewData["Title"] = "Funciones";
     Layout = null;
@@ -11,13 +17,51 @@
     <title>@ViewData["Title"]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/css/FuncionesCliente.css"/>
+    <style>
+        .horario-seleccionado {
+            background-color: deepskyblue !important;
+            color: white !important;
+        }
+
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            color: black;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .cerrar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
 
-<a href="/" class="btn-regresar">← Regresar</a>
+<a asp-page="home" class="back-button">Regresar</a>
 
 <header class="encabezado">
-    <img src="/images/logo.svg" alt="Logo" class="logo" />
+    <div class="logo-header">
+        <a href="/Cliente/Home"><img src="~/images/logo.svg" alt="Logo" /></a>
+    </div>
+
     <div>
         <h1>Funciones</h1>
         <p>Horarios y salas disponibles</p>
@@ -38,14 +82,27 @@
             <option>Plaza 4</option>
         </select>
     </div>
-    <div class="icono-user">👤</div>
+    <div class="icono-user">
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <form method="post" asp-page="/Logout">
+                <button type="submit">Cerrar sesión</button>
+            </form>
+        }
+        else
+        {
+            <a href="/Login" class="btn p-0 border-0 bg-transparent" title="Iniciar sesión">
+                <img src="~/images/iconos/user.png" alt="Iniciar sesión" style="height: 60px; width: 60px; border-radius: 50%;">
+            </a>
+        }    
+    </div>
 </header>
 
 <nav class="navegacion">
-    <a asp-page="/Cliente/Cartelera">Cartelera</a> › 
+    <a asp-page="/Cliente/home">Cartelera</a> › 
     <a asp-page="/Cliente/Funciones">Funciones</a> ›
     <a asp-page="/Cliente/Boletos">Boletos</a> › 
-    <a asp-page="/Cliente/Asientos">Asientos</a> › 
+    <a asp-page="/Cliente/SeleccionAsientos">Asientos</a> › 
     <a asp-page="/Cliente/Resumen">Resumen</a>
 </nav>
 
@@ -60,19 +117,15 @@
 
 <section class="contenedor-funciones">
     <div class="lista-funciones">
-
         <div class="idioma">
             <h3>Español</h3>
             <div class="horarios">
                 @foreach (var funcion in Model.FuncionesEspañol)
                 {
-                    <form method="get" asp-page="/Cliente/Boletos">
-                        <input type="hidden" name="idFuncion" value="@funcion.Id" />
-                        <button class="horario" type="submit">
-                            @funcion.HoraInicio.ToString()<br/>
-                            <span>@funcion.Sala?.Nombre</span>
-                        </button>
-                    </form>
+                    <button type="button" class="horario" onclick="seleccionarFuncion(this, @funcion.Id)">
+                        @funcion.HoraInicio.ToString()<br/>
+                        <span>@funcion.Sala?.Nombre</span>
+                    </button>
                 }
             </div>
         </div>
@@ -82,13 +135,10 @@
             <div class="horarios">
                 @foreach (var funcion in Model.FuncionesSubtituladas)
                 {
-                    <form method="get" asp-page="/Cliente/Boletos">
-                        <input type="hidden" name="idFuncion" value="@funcion.Id" />
-                        <button class="horario" type="submit">
-                            @funcion.HoraInicio.ToString()<br/>
-                            <span>@funcion.Sala?.Nombre</span>
-                        </button>
-                    </form>
+                    <button type="button" class="horario" onclick="seleccionarFuncion(this, @funcion.Id)">
+                        @funcion.HoraInicio.ToString()<br/>
+                        <span>@funcion.Sala?.Nombre</span>
+                    </button>
                 }
             </div>
         </div>
@@ -108,8 +158,93 @@
 </section>
 
 <footer class="boton-final">
-    <a href="/Cliente/Boletos" class="btn-continuar">Continuar</a>
+    <button class="btn-continuar" id="btnContinuar" onclick="abrirModal()" disabled>Continuar</button>
 </footer>
+
+<div id="modalCompra" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <h2>Seleccionar boletos</h2>
+        <form id="formCompra" method="get" action="/Cliente/SeleccionAsientos">
+            <input type="hidden" name="idFuncion" id="FuncionId" />
+            <input type="hidden" name="boletos" id="BoletosSeleccionadosJson" />
+            <div id="tiposBoletos">Cargando...</div>
+            <button type="submit" class="btn-continuar">Continuar</button>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    let funcionSeleccionadaId = null;
+    let botonSeleccionado = null;
+
+    function seleccionarFuncion(boton, funcionId) {
+        if (botonSeleccionado) {
+            botonSeleccionado.classList.remove('horario-seleccionado');
+        }
+        boton.classList.add('horario-seleccionado');
+        botonSeleccionado = boton;
+        funcionSeleccionadaId = funcionId;
+        document.getElementById('btnContinuar').disabled = false;
+    }
+
+    function abrirModal() {
+        if (!funcionSeleccionadaId) {
+            alert("Debes seleccionar una función primero.");
+            return;
+        }
+
+        document.getElementById('FuncionId').value = funcionSeleccionadaId;
+        const cont = document.getElementById('tiposBoletos');
+        cont.innerHTML = 'Cargando...';
+
+        fetch(`/api/funciones/${funcionSeleccionadaId}/precios`)
+            .then(res => res.json())
+            .then(data => {
+                cont.innerHTML = '';
+                data.forEach(item => {
+                    cont.innerHTML += `
+                        <label>
+                            ${item.nombre} ($${item.precio.toFixed(2)}):
+                            <input type="number" name="boletos[${item.id}]" min="0" value="0" />
+                        </label><br/>
+                    `;
+                });
+            });
+
+        document.getElementById('modalCompra').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+        document.getElementById('modalCompra').style.display = 'none';
+    }
+
+    document.getElementById('formCompra').addEventListener('submit', function (e) {
+        const boletos = {};
+        const inputs = document.querySelectorAll('#tiposBoletos input[type="number"]');
+
+        inputs.forEach(input => {
+            const match = input.name.match(/boletos\[(\d+)\]/);
+            if (match) {
+                const tipoId = match[1];
+                const cantidad = parseInt(input.value);
+                if (cantidad > 0) {
+                    boletos[tipoId] = cantidad;
+                }
+            }
+        });
+
+        if (!funcionSeleccionadaId || Object.keys(boletos).length === 0) {
+            alert("Debes seleccionar una función y al menos un boleto.");
+            e.preventDefault();
+            return;
+        }
+
+        document.getElementById('FuncionId').value = funcionSeleccionadaId;
+        document.getElementById('BoletosSeleccionadosJson').value = JSON.stringify(boletos);
+    });
+</script>
 
 </body>
 </html>

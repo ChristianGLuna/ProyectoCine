@@ -7,7 +7,8 @@ public partial class AsientosFuncion
 {
     public int FuncionId { get; set; }
 
-    public string Asiento { get; set; } = null!;
+    public int AsientoId { get; set; }
+    public virtual Asiento Asiento { get; set; } = null!;
 
     public bool? Disponible { get; set; }
 

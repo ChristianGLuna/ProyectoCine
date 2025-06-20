@@ -145,16 +145,16 @@ INSERT INTO metodos_pago (nombre) VALUES ('Plin');
 INSERT INTO metodos_pago (nombre) VALUES ('Transferencia');
 
 -- Funciones
-INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, precio, idioma, formato, estado)
-VALUES (1, 1, 1, CURDATE(), '18:00:00', '20:00:00', 20.00, 'Español', '2D', 'Activa');
-INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, precio, idioma, formato, estado)
-VALUES (2, 2, 2, CURDATE(), '18:00:00', '20:00:00', 20.00, 'Español', '2D', 'Activa');
-INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, precio, idioma, formato, estado)
-VALUES (3, 3, 3, CURDATE(), '18:00:00', '20:00:00', 20.00, 'Español', '2D', 'Activa');
-INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, precio, idioma, formato, estado)
-VALUES (4, 4, 4, CURDATE(), '18:00:00', '20:00:00', 20.00, 'Español', '2D', 'Activa');
-INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, precio, idioma, formato, estado)
-VALUES (5, 5, 5, CURDATE(), '18:00:00', '20:00:00', 20.00, 'Español', '2D', 'Activa');
+INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, idioma, formato, estado)
+VALUES (13, 1, 1, CURDATE(), '18:00:00', '20:00:00', 'Español', '2D', 'Activa');
+INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, idioma, formato, estado)
+VALUES (13, 2, 2, CURDATE(), '18:00:00', '20:00:00', 'Español', '2D', 'Activa');
+INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, idioma, formato, estado)
+VALUES (13, 3, 3, CURDATE(), '18:00:00', '20:00:00', 'Español', '2D', 'Activa');
+INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, idioma, formato, estado)
+VALUES (13, 4, 4, CURDATE(), '18:00:00', '20:00:00', 'Español', '2D', 'Activa');
+INSERT INTO funciones (pelicula_id, sala_id, sucursal_id, fecha, hora_inicio, hora_fin, idioma, formato, estado)
+VALUES (13, 5, 5, CURDATE(), '18:00:00', '20:00:00', 'Español', '2D', 'Activa');
 
 
 -- Asientos por función

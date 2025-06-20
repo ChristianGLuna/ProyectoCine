@@ -17,6 +17,9 @@ namespace Proyecto_Cine.Pages.Cliente
         [BindProperty(SupportsGet = true)]
         public int idFuncion { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string? boletos { get; set; }  // Aquí viene el JSON desde Funciones.cshtml
+
         public Funcione? Funcion { get; set; }
         public Pelicula? Pelicula { get; set; }
         public string NombreSucursal { get; set; } = string.Empty;
@@ -25,12 +28,10 @@ namespace Proyecto_Cine.Pages.Cliente
         public string FechaFormateada => Funcion?.Fecha?.ToString("dd/MM/yyyy") ?? "";
         public string HoraFormateada => Funcion?.HoraInicio?.ToString("HH:mm") ?? "";
 
-
-
-
-
-
         public Dictionary<string, List<AsientoVista>> MatrizAsientos { get; set; } = new();
+
+        [BindProperty]
+        public List<int> AsientosSeleccionados { get; set; } = new();
 
         public class AsientoVista
         {
@@ -65,7 +66,7 @@ namespace Proyecto_Cine.Pages.Cliente
                 .ToListAsync();
 
             var mapaDisponibilidad = asientosFuncion.ToDictionary(
-                af => af.Asiento,
+                af => af.AsientoId,
                 af => af.Disponible
             );
 
@@ -77,8 +78,9 @@ namespace Proyecto_Cine.Pages.Cliente
                 if (!MatrizAsientos.ContainsKey(fila))
                     MatrizAsientos[fila] = new List<AsientoVista>();
 
-                string claveAsiento = $"{fila}{numero}";
-                bool disponible = mapaDisponibilidad.TryGetValue(claveAsiento, out var estado) ? estado ?? true : true;
+                bool disponible = mapaDisponibilidad.TryGetValue(asiento.Id, out var estado)
+                    ? estado ?? true
+                    : true;
 
                 MatrizAsientos[fila].Add(new AsientoVista
                 {
@@ -89,7 +91,27 @@ namespace Proyecto_Cine.Pages.Cliente
                 });
             }
 
+            // Aquí podrías deserializar el JSON de boletos si quieres usarlo
+            if (!string.IsNullOrEmpty(boletos))
+            {
+                // Ejemplo (opcional): var boletosSeleccionados = JsonSerializer.Deserialize<Dictionary<int, int>>(boletos);
+            }
+
             return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (AsientosSeleccionados == null || !AsientosSeleccionados.Any())
+            {
+                ModelState.AddModelError(string.Empty, "Debe seleccionar al menos un asiento.");
+                return Page();
+            }
+
+            TempData["FuncionId"] = idFuncion;
+            TempData["AsientosSeleccionados"] = string.Join(",", AsientosSeleccionados);
+
+            return RedirectToPage("/Cliente/ResumenPago");
         }
     }
 }
