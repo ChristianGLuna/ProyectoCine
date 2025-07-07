@@ -1,23 +1,28 @@
 @page
 @using Proyecto_Cine.Pages.Cliente
 @model FuncionesModel
+
 @if (TempData["Error"] != null)
 {
     <div class="alert alert-danger">
         @TempData["Error"]
     </div>
 }
+
 @{
     ViewData["Title"] = "Funciones";
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
     <title>@ViewData["Title"]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/FuncionesCliente.css"/>
+    <link rel="stylesheet" href="/css/FuncionesCliente.css" />
+</head>
+<body>
     <style>
     .horario-seleccionado {
         background-color: deepskyblue !important;
@@ -195,8 +200,6 @@
         background-color: #00a8ff;
     }
 </style>
-</head>
-<body>
 
 <a asp-page="home" class="back-button">Regresar</a>
 
@@ -204,12 +207,9 @@
     <div class="logo-header">
         <a href="/Cliente/Home"><img src="~/images/logo.svg" alt="Logo" /></a>
     </div>
-
     <div>
         <h1><strong>Funciones, horarios y salas disponibles</strong></h1>
-
     </div>
-
     <div class="icono-user">
         @if (User.Identity != null && User.Identity.IsAuthenticated)
         {
@@ -220,9 +220,9 @@
         else
         {
             <a href="/Login" class="btn p-0 border-0 bg-transparent" title="Iniciar sesión">
-                <img src="~/images/iconos/user.png" alt="Iniciar sesión" style="height: 60px; width: 60px; border-radius: 50%;">
+                <img src="~/images/iconos/user.png" alt="Iniciar sesión" style="height:60px; width:60px; border-radius:50%;" />
             </a>
-        }    
+        }
     </div>
 </header>
 
@@ -248,7 +248,6 @@
                 }
             </div>
         </div>
-
         <div class="idioma">
             <h3>Subtitulada</h3>
             <div class="horarios">
@@ -290,6 +289,7 @@
         <form id="formCompra" method="get" action="/Cliente/SeleccionAsientos">
             <input type="hidden" name="idFuncion" id="FuncionId" />
             <input type="hidden" name="boletos" id="BoletosSeleccionadosJson" />
+            <input type="hidden" name="TotalPrecio" id="TotalPrecio" />
 
             <div id="tiposBoletos" class="tipos-boletos">
                 <!-- Dinámico vía fetch -->
@@ -371,23 +371,36 @@
         let totalCantidad = 0;
         let totalPrecio = 0;
         document.querySelectorAll('#tiposBoletos input[id^="cantidad_"]').forEach(input => {
-            const id = input.id.split('_')[1];
-            const cantidad = parseInt(input.value);
-            const precio = parseFloat(input.closest('.boleto-linea').querySelector('small').textContent.replace('$', '').replace(' mx', ''));
+            const cantidad = parseInt(input.value) || 0;
+            const precio = parseFloat(
+                input.closest('.boleto-linea')
+                     .querySelector('small')
+                     .textContent
+                     .replace('$', '')
+                     .replace(' mx', '')
+            );
             totalCantidad += cantidad;
             totalPrecio += cantidad * precio;
         });
 
         document.getElementById('totalCantidad').textContent = `${totalCantidad} boletos`;
         document.getElementById('totalPrecio').textContent = `$${totalPrecio.toFixed(2)} mx`;
+
+        // actualiza el campo oculto
+        document.getElementById('TotalPrecio').value = totalPrecio.toFixed(2);
+        console.log('TotalPrecio hidden:', document.getElementById('TotalPrecio').value);
+
     }
 
     document.getElementById('formCompra').addEventListener('submit', function (e) {
+        // asegúrate de recalcular antes de enviar
+        actualizarTotales();
+
         const boletos = {};
         document.querySelectorAll('#tiposBoletos input[id^="cantidad_"]').forEach(input => {
-            const id = input.id.split('_')[1];
-            const cantidad = parseInt(input.value);
+            const cantidad = parseInt(input.value) || 0;
             if (cantidad > 0) {
+                const id = input.id.split('_')[1];
                 boletos[id] = cantidad;
             }
         });
@@ -398,7 +411,6 @@
             return;
         }
 
-        document.getElementById('FuncionId').value = funcionSeleccionadaId;
         document.getElementById('BoletosSeleccionadosJson').value = JSON.stringify(boletos);
     });
 </script>

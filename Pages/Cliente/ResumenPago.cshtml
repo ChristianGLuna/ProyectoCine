@@ -19,8 +19,6 @@
 
     function cerrarPopup() {
         document.getElementById("popupPagoTarjeta").classList.remove("show");
-
-        // Simula que el pago fue exitoso y redirige
         window.location.href = "/Cliente/Confirmacion";
     }
 </script>
@@ -32,27 +30,21 @@
         </div>
 
         <!-- HEADER -->
- <header class="asientos-header">
-    <!-- Botón regresar a la izquierda -->
-    <div class="logo-header">
-        <a href="/Cliente/SeleccionAsientos?id=@Model.Funcion?.Id" class="btn-regresar">← Regresar</a>
-    </div>
-
-    <!-- Centro con título y breadcrumb -->
-    <div class="header-center">
-        <h1 class="titulo-asientos">Resumen</h1>
-        <nav class="navegacion">
-            <a href="/Cliente/Home">Cartelera</a> ›
-            <a href="/Cliente/Funciones">Funciones</a> ›
-            <a href="/Cliente/Boletos">Boletos</a> ›
-            <a href="/Cliente/SeleccionAsientos">Asientos</a> ›
-            <span style="color: white;">Resumen</span>
-        </nav>
-    </div>
-</header>
-
-
-
+        <header class="asientos-header">
+            <div class="logo-header">
+                <a href="/Cliente/SeleccionAsientos?id=@Model.Funcion?.Id" class="btn-regresar">← Regresar</a>
+            </div>
+            <div class="header-center">
+                <h1 class="titulo-asientos">Resumen</h1>
+                <nav class="navegacion">
+                    <a href="/Cliente/Home">Cartelera</a> ›
+                    <a href="/Cliente/Funciones">Funciones</a> ›
+                    <a href="/Cliente/Boletos">Boletos</a> ›
+                    <a href="/Cliente/SeleccionAsientos">Asientos</a> ›
+                    <span style="color: white;">Resumen</span>
+                </nav>
+            </div>
+        </header>
 
         <!-- CUERPO -->
         <main class="resumen-grid">
@@ -61,115 +53,139 @@
                 <input type="hidden" name="idFuncion" value="@Model.idFuncion" />
                 <input type="hidden" name="AsientosSeleccionados" value="@Model.AsientosSeleccionados" />
                 <input type="hidden" name="BoletosDescripcionInput" value="@Model.BoletosDescripcionInput" />
-                <input type="hidden" name="TotalInput" value="@Model.TotalInput" />
+                <!-- NUEVO: enviar el total -->
+                <input type="hidden" name="TotalPrecio" value="@Model.TotalPrecio" />
 
                 <!-- DETALLES -->
                 <section class="resumen-funcion resumen-blanco">
                     <img src="@Model.Pelicula?.Imagen" alt="@Model.Pelicula?.Titulo" class="poster" />
-                    <h3><span class="etiqueta-b">@Model.Pelicula?.Clasificacion</span> @Model.Pelicula?.Titulo</h3>
-                    <p><small><em>Duración: @Model.Pelicula?.Duracion min</em></small></p>
+
+                    <h3>
+                        <span class="etiqueta-b">@Model.Pelicula?.Clasificacion</span>
+                        @Model.Pelicula?.Titulo
+                    </h3>
+                    <p>
+                        <small><em>Duración: @Model.Pelicula?.Duracion min</em></small>
+                    </p>
                     <p><strong>Cine:</strong> @Model.NombreSucursal</p>
-                    <p><strong>Función:</strong> @Model.FechaFormateada, @Model.HoraFormateada<br> Sala @Model.NombreSala</p>
+                    <p>
+                        <strong>Función:</strong>
+                        @Model.FechaFormateada, @Model.HoraFormateada<br />
+                        Sala @Model.NombreSala
+                    </p>
                     
                     <p><strong>Boletos:</strong> @Model.BoletosDescripcionInput</p>
 
                     @if (Model.DesgloseBoletos?.Any() == true)
-{
-    <table class="tabla-desglose" style="margin-top: 1rem; width: 100%;">
-        <thead>
-            <tr>
-                <th style="text-align: left;">Tipo</th>
-                <th style="text-align: center;">Cantidad</th>
-                <th style="text-align: right;">Precio c/u</th>
-                <th style="text-align: right;">Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.DesgloseBoletos)
-            {
-                <tr>
-                    <td>@item.Key</td>
-                    <td style="text-align: center;">@item.Value.Cantidad</td>
-                    <td style="text-align: right;">@item.Value.PrecioUnitario.ToString("C", System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"))</td>
-                    <td style="text-align: right;">@item.Value.Subtotal.ToString("C", System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"))</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
+                    {
+                        <table class="tabla-desglose" style="margin-top:1rem; width:100%">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:left">Tipo</th>
+                                    <th style="text-align:center">Cantidad</th>
+                                    <th style="text-align:right">Precio c/u</th>
+                                    <th style="text-align:right">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.DesgloseBoletos)
+                                {
+                                    <tr>
+                                        <td>@item.Key</td>
+                                        <td style="text-align:center">@item.Value.Cantidad</td>
+                                        <td style="text-align:right">
+                                            @item.Value.PrecioUnitario.ToString("C", 
+                                                System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"))
+                                        </td>
+                                        <td style="text-align:right">
+                                            @item.Value.Subtotal.ToString("C", 
+                                                System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"))
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
 
                     <p><strong>Asientos:</strong> @Model.AsientosSeleccionadosTexto</p>
-                    <p class="resumen-total"><strong>Total:</strong> @Model.TotalDecimal.ToString("C", System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"))</p>
-                    <hr>
-                    <p><strong>Sinopsis:</strong><br>
+
+                    <!-- Mostramos el total formateado -->
+                    <p class="resumen-total">
+                        <strong>Total:</strong>
+                        @Model.TotalPrecio.ToString("C", 
+                            System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"))
+                    </p>
+
+                    <hr />
+
+                    <p>
+                        <strong>Sinopsis:</strong><br />
                         @Model.Pelicula?.Sinopsis
                     </p>
                 </section>
 
                 <!-- BOTÓN -->
-                <div style="text-align: center; margin-top: 2rem;">
-                   <button type="button" onclick="abrirPopupPago()" class="btn-continuar">Pagar</button>
+                <div style="text-align:center; margin-top:2rem;">
+                    <button type="button" onclick="abrirPopupPago()" class="btn-continuar">
+                        Pagar
+                    </button>
                 </div>
             </form>
         </main>
     </div>
 
     <!-- POPUP PagoTarjeta -->
-<div id="popupPagoTarjeta" class="popup-overlay">
-    <div class="popup-content">
-        <h2>Pago con Tarjeta</h2>
-        <p>Simulación de ingreso de datos de tarjeta</p>
-
-        <input type="text" placeholder="Número de tarjeta" />
-        <input type="text" placeholder="Nombre del titular" />
-        <input type="text" placeholder="MM/AA" />
-        <input type="password" placeholder="CVC" />
-
-        <div style="text-align: center; margin-top: 1rem;">
-            <button onclick="cerrarPopup()" class="btn-continuar">Confirmar</button>
+    <div id="popupPagoTarjeta" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Pago con Tarjeta</h2>
+            <p>Simulación de ingreso de datos de tarjeta</p>
+            <input type="text" placeholder="Número de tarjeta" />
+            <input type="text" placeholder="Nombre del titular" />
+            <input type="text" placeholder="MM/AA" />
+            <input type="password" placeholder="CVC" />
+            <div style="text-align:center; margin-top:1rem;">
+                <button onclick="mostrarConfirmacion()" class="btn-continuar">Confirmar</button>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- POPUP de Confirmación -->
-<div id="popupConfirmacion" class="popup-overlay">
-    <div class="popup-content text-center">
-        <h2>✅ Pago exitoso :)</h2>
-        <p>Gracias por tu compra.</p>
-        <div style="margin-top: 1.5rem;">
-            <button onclick="redirigirAHome()" class="btn-continuar">Aceptar</button>
+    <!-- POPUP Confirmación -->
+    <div id="popupConfirmacion" class="popup-overlay">
+        <div class="popup-content text-center">
+            <h2>✅ Pago exitoso :)</h2>
+            <p>Gracias por tu compra.</p>
+            <div style="margin-top:1.5rem;">
+                <button onclick="redirigirAHome()" class="btn-continuar">Aceptar</button>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.querySelector("form").addEventListener("submit", function (e) {
-        const metodo = document.querySelector('input[name="MetodoPago"]:checked');
-        if (metodo && metodo.value === "Tarjeta") {
-            e.preventDefault();
-            document.getElementById("popupPagoTarjeta").classList.add("show");
-        }
-    });
+    <script>
+  // Abre el modal de pago con tarjeta
+  function abrirPopupPago() {
+    document.getElementById("popupPagoTarjeta").classList.add("show");
+  }
 
-    function cerrarPopup() {
-        document.getElementById("popupPagoTarjeta").classList.remove("show");
-        // Aquí podrías redirigir o simular que se completa el pago
-        window.location.href = "/Cliente/Confirmacion"; // redirección opcional
+  // Cierra el modal de pago y muestra el de confirmación
+  function mostrarConfirmacion() {
+    document.getElementById("popupPagoTarjeta").classList.remove("show");
+    document.getElementById("popupConfirmacion").classList.add("show");
+  }
+
+  // Redirige a la página principal o de confirmación final
+  function redirigirAHome() {
+    window.location.href = "/Cliente/Home";
+  }
+
+  // Si aún quieres interceptar el submit (por ejemplo, con un método de pago por formulario):
+  document.querySelector("form").addEventListener("submit", function (e) {
+    const metodo = document.querySelector('input[name="MetodoPago"]:checked');
+    if (metodo && metodo.value === "Tarjeta") {
+      e.preventDefault();
+      abrirPopupPago();
     }
+  });
 </script>
-
-<script>
-    function cerrarPopup() {
-        document.getElementById("popupPagoTarjeta").classList.remove("show");
-        document.getElementById("popupConfirmacion").classList.add("show");
-    }
-
-    function redirigirAHome() {
-        window.location.href = "/Cliente/Home";
-    }
-</script>
-
 
 </body>
 </html>
