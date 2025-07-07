@@ -206,25 +206,10 @@
     </div>
 
     <div>
-        <h1>Funciones</h1>
-        <p>Horarios y salas disponibles</p>
+        <h1><strong>Funciones, horarios y salas disponibles</strong></h1>
+
     </div>
-    <div class="menu-desplegables">
-        <select>
-            <option>Seleccione su ubicación</option>
-            <option>Aguascalientes</option>
-            <option>Campeche</option>
-            <option>CDMX</option>
-            <option>Puebla</option>
-        </select>
-        <select>
-            <option>Seleccione su sucursal</option>
-            <option>Plaza 1</option>
-            <option>Plaza 2</option>
-            <option>Plaza 3</option>
-            <option>Plaza 4</option>
-        </select>
-    </div>
+
     <div class="icono-user">
         @if (User.Identity != null && User.Identity.IsAuthenticated)
         {
@@ -248,15 +233,6 @@
     <a asp-page="/Cliente/SeleccionAsientos">Asientos</a> › 
     <a asp-page="/Cliente/Resumen">Resumen</a>
 </nav>
-
-<section class="seleccion-fecha">
-    <label>Fecha</label>
-    <form method="get" class="input-fecha">
-        <input type="hidden" name="id" value="@Model.Pelicula?.Id" />
-        <input type="date" name="fecha" value="@(Model.Fecha?.ToString() ?? "")" />
-        <button type="submit" class="btn-filtrar">🧪 Filtrar</button>
-    </form>
-</section>
 
 <section class="contenedor-funciones">
     <div class="lista-funciones">
