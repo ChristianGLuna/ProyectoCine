@@ -152,7 +152,7 @@ CREATE TABLE `funciones` (
   CONSTRAINT `funciones_ibfk_1` FOREIGN KEY (`pelicula_id`) REFERENCES `peliculas` (`id`),
   CONSTRAINT `funciones_ibfk_2` FOREIGN KEY (`sala_id`) REFERENCES `salas` (`id`),
   CONSTRAINT `funciones_ibfk_3` FOREIGN KEY (`sucursal_id`) REFERENCES `sucursales` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `funciones` (
 
 LOCK TABLES `funciones` WRITE;
 /*!40000 ALTER TABLE `funciones` DISABLE KEYS */;
-INSERT INTO `funciones` VALUES (1,1,1,1,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Activa'),(2,2,2,2,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Activa'),(3,3,3,3,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Activa'),(4,4,4,4,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Activa'),(5,5,5,5,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Activa'),(6,13,1,1,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(7,13,2,2,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(8,13,3,3,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(9,13,4,4,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(10,13,5,5,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa');
+INSERT INTO `funciones` VALUES (1,1,1,NULL,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Inactiva'),(2,2,2,2,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Inactiva'),(3,3,3,3,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Inactiva'),(4,4,4,4,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Inactiva'),(5,5,5,5,'2025-06-16','18:00:00','20:00:00',20.00,'Español','2D','Inactiva'),(6,13,1,1,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(7,13,2,2,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(8,13,3,3,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(9,13,4,4,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(10,13,5,5,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(11,6,6,4,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(15,10,10,2,'2025-06-19','18:00:00','20:00:00',NULL,'Español','2D','Activa'),(16,11,1,1,'2025-06-19','20:30:00','22:30:00',NULL,'Español','2D','Activa');
 /*!40000 ALTER TABLE `funciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +266,7 @@ CREATE TABLE `peliculas` (
   `imagen` varchar(255) DEFAULT NULL,
   `activa` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,7 +275,7 @@ CREATE TABLE `peliculas` (
 
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
-INSERT INTO `peliculas` VALUES (1,'El Viaje Intergaláctico','Una aventura espacial...','Ciencia Ficción',120,'PG-13','Español','Un astronauta perdido...','viaje.jpg',0),(2,'Amor en los Tiempos Modernos','Una comedia romántica...','Romance',105,'PG','Español','El amor florece...','amor.jpg',0),(3,'La Maldición del Lago','Terror sobrenatural...','Terror',95,'R','Español','Una leyenda renace...','maldicion.jpg',0),(4,'Código Mortal','Acción y suspenso...','Acción',110,'PG-13','Español','Un hacker peligroso...','codigo.jpg',0),(5,'El Gran Chef','Competencia culinaria...','Comedia',100,'PG','Español','Recetas y risas...','chef.jpg',0),(6,'El sorprendente hombre-araña','Peter Parker...','Acción',120,'B','Español','Spiderman salva el día','/images/spiderman.jpg',1),(7,'Los vengadores','Héroes unidos...','Acción',140,'B','Español','Luchan contra Loki','/images/avengers.jpg',0),(8,'Volver al futuro','Viaje en el tiempo...','Ciencia Ficción',116,'A','Español','Marty McFly viaja al pasado','/images/volver-al-futuro.jpg',0),(9,'Avatar','Pandora y la guerra...','Ciencia Ficción',162,'B','Español','Jake Sully se une a los Na?vi','/images/avatar.jpg',0),(10,'Jurassic Park','Dinosaurios...','Aventura',127,'B','Español','Parque temático fallido','/images/jurassic-park.jpg',0),(11,'The New Avengers','Nuevo equipo...','Acción',130,'B','Español','Nuevos héroes se levantan','/images/new-avengers.jpg',0),(12,'El sorprendente hombre-araña','Peter Parker...','Acción',120,'B','Español','Spiderman salva el día','/images/spiderman.jpg',0),(13,'Los vengadores','Héroes unidos...','Acción',140,'B','Español','Luchan contra Loki','/images/avengers.jpg',1),(14,'Volver al futuro','Viaje en el tiempo...','Ciencia Ficción',116,'A','Español','Marty McFly viaja al pasado','/images/volver-al-futuro.jpg',1),(15,'Avatar','Pandora y la guerra...','Ciencia Ficción',162,'B','Español','Jake Sully se une a los Na?vi','/images/avatar.jpg',1),(16,'Jurassic Park','Dinosaurios...','Aventura',127,'B','Español','Parque temático fallido','/images/jurassic-park.jpg',1),(17,'The New Avengers','Nuevo equipo...','Acción',130,'B','Español','Nuevos héroes se levantan','/images/new-avengers.jpg',1);
+INSERT INTO `peliculas` VALUES (1,'El Viaje Intergaláctico','Una aventura espacial...','Ciencia Ficción',120,'PG-13','Español','Un astronauta perdido...','viaje.jpg',0),(2,'Amor en los Tiempos Modernos','Una comedia romántica...','Romance',105,'PG','Español','El amor florece...','amor.jpg',0),(3,'La Maldición del Lago','Terror sobrenatural...','Terror',95,'R','Español','Una leyenda renace...','maldicion.jpg',0),(4,'Código Mortal','Acción y suspenso...','Acción',110,'PG-13','Español','Un hacker peligroso...','codigo.jpg',0),(5,'El Gran Chef','Competencia culinaria...','Comedia',100,'PG','Español','Recetas y risas...','chef.jpg',0),(6,'El sorprendente hombre-araña','Peter Parker...','Acción',120,'B','Español','Spiderman salva el día','/images/spiderman.jpg',0),(10,'Jurassic Park','Dinosaurios...','Aventura',127,'B','Español','Parque temático fallido','/images/peliculas/jurassic-park.jpg',0),(11,'The New Avengers','Nuevo equipo...','Acción',130,'B','Español','Nuevos héroes se levantan','/images/peliculas/new-avengers.jpg',0),(12,'El sorprendente hombre-araña','Peter Parker...','Acción',120,'B','Español','Spiderman salva el día','/images/spiderman.jpg',0),(13,'Los vengadores','Héroes unidos...','Acción',140,'B','Español','Luchan contra Loki','/images/peliculas/avengers.jpg',1),(14,'Volver al futuro','Viaje en el tiempo...','Ciencia Ficción',116,'A','Español','Marty McFly viaja al pasado','/images/volver-al-futuro.jpg',0),(15,'Avatar','Pandora y la guerra...','Ciencia Ficción',162,'B','Español','Jake Sully se une a los Na?vi','/images/peliculas/avatar.jpg',0),(16,'Jurassic Park','Dinosaurios...','Aventura',127,'B','Español','Parque temático fallido','/images/jurassic-park.jpg',0);
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,7 +303,7 @@ CREATE TABLE `precios_funcion` (
 
 LOCK TABLES `precios_funcion` WRITE;
 /*!40000 ALTER TABLE `precios_funcion` DISABLE KEYS */;
-INSERT INTO `precios_funcion` VALUES (1,1,18.00),(1,2,16.00),(1,3,14.00),(2,1,18.00),(2,2,16.00),(2,3,14.00),(3,1,18.00),(3,2,16.00),(3,3,14.00),(4,1,18.00),(4,2,16.00),(4,3,14.00),(5,1,18.00),(5,2,16.00),(5,3,14.00),(6,1,80.00),(6,2,60.00),(6,3,50.00),(7,1,80.00),(7,2,60.00),(7,3,50.00),(8,1,80.00),(8,2,60.00),(8,3,50.00),(9,1,80.00),(9,2,60.00),(9,3,50.00),(10,1,80.00),(10,2,60.00),(10,3,50.00);
+INSERT INTO `precios_funcion` VALUES (1,1,18.00),(1,2,16.00),(1,3,14.00),(2,1,18.00),(2,2,16.00),(2,3,14.00),(3,1,18.00),(3,2,16.00),(3,3,14.00),(4,1,18.00),(4,2,16.00),(4,3,14.00),(5,1,18.00),(5,2,16.00),(5,3,14.00),(6,1,80.00),(6,2,60.00),(6,3,50.00),(7,1,80.00),(7,2,60.00),(7,3,50.00),(8,1,80.00),(8,2,60.00),(8,3,50.00),(9,1,80.00),(9,2,60.00),(9,3,50.00),(10,1,80.00),(10,2,60.00),(10,3,50.00),(11,1,80.00),(11,2,60.00),(11,3,50.00),(15,1,80.00),(15,2,60.00),(15,3,50.00),(16,1,80.00),(16,2,60.00),(16,3,50.00);
 /*!40000 ALTER TABLE `precios_funcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,10 +383,11 @@ CREATE TABLE `salas` (
   `tipo` varchar(50) DEFAULT NULL,
   `capacidad` int DEFAULT NULL,
   `id_sucursal` int DEFAULT NULL,
+  `Estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_sucursal` (`id_sucursal`),
   CONSTRAINT `salas_ibfk_1` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +396,7 @@ CREATE TABLE `salas` (
 
 LOCK TABLES `salas` WRITE;
 /*!40000 ALTER TABLE `salas` DISABLE KEYS */;
-INSERT INTO `salas` VALUES (1,'Sala 1','IMAX',20,1),(2,'Sala 2','2D',20,2),(3,'Sala 3','3D',20,3),(4,'Sala 4','2D',20,4),(5,'Sala 5','3D',20,5),(6,'Sala 1','3D',20,4),(7,'Sala 1','IMAX',20,3),(8,'Sala 1','IMAX',20,5),(9,'Sala N','3D',10,5),(10,'Sala 5','3D',20,2);
+INSERT INTO `salas` VALUES (1,'Sala 1','IMAX',20,1,'Activa'),(2,'Sala 2','2D',20,2,'Activa'),(3,'Sala 3','3D',20,3,'Activa'),(4,'Sala 4','2D',20,4,'Activa'),(5,'Sala 5','3D',20,5,'Activa'),(6,'Sala 1','3D',20,4,'Activa'),(7,'Sala 1','IMAX',20,3,'Activa'),(8,'Sala 1','IMAX',20,5,'Activa'),(9,'Sala N','3D',10,5,'Activa'),(10,'Sala 5','3D',20,2,'Activa'),(11,'Sala 1','IMAX',20,1,'Inactiva'),(12,'Sala 1','IMAX',200,1,'Activa'),(13,'Sala 1','IMAX',2000,1,'Inactiva'),(14,'patito','3D',2000,5,'Inactiva'),(15,'Sala Samiento','3D',200,2,'Inactiva');
 /*!40000 ALTER TABLE `salas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,7 +469,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `telefono` (`telefono`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -477,7 +478,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Admin','Sarmiento','admin@sarmimovie.com','0000000000','Bhbbu8g3cG21oJTTBgP0RAmRURnvTBu/5PaTP8Kr68U=','Admin',1,'2025-06-16 21:08:59'),(4,'Admin','Cine','admin@cine.com',NULL,'JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=','Admin',1,'2025-06-18 04:11:45'),(5,'Christian Gael','Murrieta Luna','chris@cine.com',NULL,'QGEuEDLFLkP8ikQDz+K+OYbTeMuh8EhkLhJnWCJibV4=','Cliente',1,'2025-06-18 22:00:00');
+INSERT INTO `usuarios` VALUES (1,'Admin','Sarmiento','admin@sarmimovie.com','0000000000','Bhbbu8g3cG21oJTTBgP0RAmRURnvTBu/5PaTP8Kr68U=','Admin',1,'2025-06-16 21:08:59'),(4,'Admin','Cine','admin@cine.com',NULL,'JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=','Admin',1,'2025-06-18 04:11:45'),(5,'Christian Gael','Murrieta Luna','chris@cine.com',NULL,'QGEuEDLFLkP8ikQDz+K+OYbTeMuh8EhkLhJnWCJibV4=','Cliente',1,'2025-06-18 22:00:00'),(6,'Paco','P','paquito@correo.com',NULL,'WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=','Cliente',1,'2025-07-07 08:27:53');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -490,4 +491,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-19 18:53:45
+-- Dump completed on 2025-07-07 10:48:05
