@@ -38,31 +38,49 @@
 
                 <form method="post">
                     @foreach (var fila in Model.MatrizAsientos.Keys)
-{
-    <div class="fila-asientos">
-        <span class="letra-fila">@fila</span>
-        @foreach (var asiento in Model.MatrizAsientos[fila])
-        {
-            if (asiento.Disponible)
-            {
-                <input type="checkbox" id="asiento_@asiento.Id" name="AsientosSeleccionados" value="@asiento.Id"
-                    @(Model.AsientosSeleccionados.Contains(asiento.Id) ? "checked" : "") />
-                <label for="asiento_@asiento.Id" class="asiento disponible">@asiento.Numero</label>
-            }
-            else
-            {
-                <label class="asiento ocupado">@asiento.Numero</label>
-            }
-        }
-    </div>
-}
+                    {
+                        <div class="fila-asientos">
+                            <span class="letra-fila">@fila</span>
+                            @foreach (var asiento in Model.MatrizAsientos[fila])
+                            {
+                                if (asiento.Disponible)
+                                {
+                                    <input type="checkbox"
+                                           id="asiento_@asiento.Id"
+                                           name="AsientosSeleccionados"
+                                           value="@asiento.Id"
+                                           @(Model.AsientosSeleccionados.Contains(asiento.Id) ? "checked" : "") />
+                                    <label for="asiento_@asiento.Id" class="asiento disponible">
+                                        @asiento.Numero
+                                    </label>
+                                }
+                                else
+                                {
+                                    <label class="asiento ocupado">@asiento.Numero</label>
+                                }
+                            }
+                        </div>
+                    }
 
+                    <!-- Inputs ocultos actualizados -->
+                    <input type="hidden"
+                           name="idFuncion"
+                           value="@Model.idFuncion" />
 
-                    <!-- Inputs ocultos con valores asignados -->
-                    <input type="hidden" name="idFuncion" value="@Model.idFuncion" />
-                    <input type="hidden" id="inputBoletosDescripcion" name="BoletosDescripcion" value="@Model.BoletosDescripcion" />
-                    <input type="hidden" id="inputTotal" name="Total" value="@Model.Total" />
-                    <input type="hidden" id="inputBoletosJson" name="BoletosJson" />
+                    <input type="hidden"
+                           id="inputBoletosDescripcion"
+                           name="BoletosDescripcionInput"
+                           value="@Model.BoletosDescripcionInput" />
+
+                    <input type="hidden"
+                           id="inputTotal"
+                           name="TotalPrecio"
+                           value="@Model.TotalPrecio" />
+
+                    <input type="hidden"
+                           id="inputBoletosJson"
+                           name="BoletosJson" />
+
                     <button type="submit" class="btn-continuar">Continuar</button>
                 </form>
             </section>
@@ -78,38 +96,18 @@
         </main>
     </div>
 
-    <!-- 
-    <div id="confirmModal" class="modal">
-        <div class="modal-content">
-            <h2>¿Estás seguro que quieres salir?</h2>
-            <p>Se perderá la compra</p>
-            <div class="modal-buttons">
-                <button class="btn btn-cancelar" onclick="cancelarSalida()">No</button>
-                <button class="btn btn-continuar" onclick="confirmarRedireccion()">Salir</button>
-            </div>
-        </div>
-    </div>
-    -->
-
     <script>
         let destino = "";
-
         function confirmarSalida(ruta) {
             destino = ruta;
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'flex';
+            document.getElementById('confirmModal').style.display = 'flex';
         }
-
         function cancelarSalida() {
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'none';
             destino = "";
+            document.getElementById('confirmModal').style.display = 'none';
         }
-
         function confirmarRedireccion() {
-            if (destino) {
-                window.location.href = destino;
-            }
+            if (destino) window.location.href = destino;
         }
     </script>
 </body>
