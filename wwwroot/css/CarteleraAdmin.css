@@ -5,6 +5,20 @@ body {
     color: white;
 }
 
+.movie-card.inactive {
+    opacity: 0.75;
+    background-color: #f3f3f3;
+}
+
+.titulodes{
+    color: #2a2a2a;
+}
+
+.btn-accion.btn-activar {
+    background-color: #4CAF50;
+    color: white;
+}
+
 .admin-panel {
     display: flex;
     min-height: 100vh;

@@ -37,6 +37,7 @@
             <a class="btn" asp-page="ModificarPeliculaAdmin">+ Añadir</a>
         </form>
 
+        <!-- 🎬 PELÍCULAS ACTIVAS -->
         <div class="movie-grid">
         @foreach (var pelicula in Model.Peliculas)
         {
@@ -49,14 +50,56 @@
 
                 <a class="btn-accion btn-modificar" asp-page="ModificarPeliculaAdmin" asp-route-id="@pelicula.Id">Modificar</a>
 
-                <a href="javascript:void(0);" onclick="document.getElementById('form-@pelicula.Id').submit();" class="btn-accion btn-quitar">Quitar</a>
-                <form id="form-@pelicula.Id" method="post" asp-page-handler="Desactivar" asp-route-id="@pelicula.Id" style="display:none;"></form>
-
+                <a href="javascript:void(0);" onclick="confirmarDesactivacion(@pelicula.Id)" class="btn-accion btn-quitar">Quitar</a>
+                <form id="form-desactivar-@pelicula.Id" method="post" asp-page-handler="Desactivar" asp-route-id="@pelicula.Id" style="display:none;"></form>
             </div>
         }
-    </div>
+        </div>
+
+        <!-- 🎬 PELÍCULAS INACTIVAS -->
+        @if (Model.PeliculasInactivas.Any())
+        {
+            <h2 style="margin-top: 3rem;">Películas desactivadas</h2>
+            <p>Estas películas ya no están en cartelera</p>
+
+            <div class="movie-grid">
+            @foreach (var pelicula in Model.PeliculasInactivas)
+            {
+                <div class="movie-card inactive">
+                    <span class="badge badge-@pelicula.Clasificacion?.ToLower()">@pelicula.Clasificacion</span>
+
+                    <img src="@pelicula.Imagen" alt="@pelicula.Titulo" class="movie-img" />
+
+                    <h4 class="titulodes">@pelicula.Titulo</h4>
+
+                    <a class="btn-accion btn-modificar" asp-page="ModificarPeliculaAdmin" asp-route-id="@pelicula.Id">Modificar</a>
+
+                    <a href="javascript:void(0);" onclick="confirmarActivacion(@pelicula.Id)" class="btn-accion btn-activar">Activar</a>
+                    <form id="form-activar-@pelicula.Id" method="post" asp-page-handler="Activar" asp-route-id="@pelicula.Id" style="display:none;"></form>
+                </div>
+            }
+            </div>
+        }
+
     </main>
 </div>
+
+<!-- ✅ SCRIPTS DE CONFIRMACIÓN -->
+<script>
+    function confirmarDesactivacion(id) {
+        const ok = confirm("¿Estás seguro de que deseas quitar esta película de la cartelera?");
+        if (ok) {
+            document.getElementById('form-desactivar-' + id).submit();
+        }
+    }
+
+    function confirmarActivacion(id) {
+        const ok = confirm("¿Deseas volver a activar esta película?");
+        if (ok) {
+            document.getElementById('form-activar-' + id).submit();
+        }
+    }
+</script>
 
 </body>
 </html>

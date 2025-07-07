@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Cine.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Proyecto_Cine.Pages.Admin
 {
@@ -14,12 +16,19 @@ namespace Proyecto_Cine.Pages.Admin
             _context = context;
         }
 
-        public List<Sala> Salas { get; set; } = new();
+        public List<Sala> SalasActivas { get; set; } = new();
+        public List<Sala> SalasInactivas { get; set; } = new();
 
         public void OnGet()
         {
-            Salas = _context.Salas
+            SalasActivas = _context.Salas
                 .Include(s => s.IdSucursalNavigation)
+                .Where(s => s.Estado == "Activa")
+                .ToList();
+
+            SalasInactivas = _context.Salas
+                .Include(s => s.IdSucursalNavigation)
+                .Where(s => s.Estado == "Inactiva")
                 .ToList();
         }
 
@@ -28,7 +37,19 @@ namespace Proyecto_Cine.Pages.Admin
             var sala = _context.Salas.FirstOrDefault(s => s.Id == id);
             if (sala != null)
             {
-                // sala.Activa = false;
+                sala.Estado = "Inactiva";
+                _context.SaveChanges();
+            }
+
+            return RedirectToPage();
+        }
+
+        public IActionResult OnPostActivar(int id)
+        {
+            var sala = _context.Salas.FirstOrDefault(s => s.Id == id);
+            if (sala != null)
+            {
+                sala.Estado = "Activa";
                 _context.SaveChanges();
             }
 

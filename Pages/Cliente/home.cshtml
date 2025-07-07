@@ -22,30 +22,31 @@
         <div class="d-flex align-items-center gap-2">
 
             <!-- Dropdown Ubicación -->
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <button class="btn btn-info dropdown-toggle rounded-pill text-white px-3" type="button" data-bs-toggle="dropdown">
                     Ubicación
                 </button>
                 <ul class="dropdown-menu">
-                    @foreach (var ciudad in Model.Ciudades)
+                    2@foreach (var ciudad in Model.Ciudades)
                     {
-                        <li><a class="dropdown-item" href="#">@ciudad</a></li>
+                        <li><a class="dropdown-item" href="#">2@ciudad</a></li>
                     }
                 </ul>
-            </div>
-
-            <!-- Dropdown Sucursal -->
-            <div class="dropdown">
+            </div> -->
+<!-- Dropdown Sucursal        
+  <div class="dropdown">
                 <button class="btn btn-info dropdown-toggle rounded-pill text-white px-3" type="button" data-bs-toggle="dropdown">
                     Sucursal
                 </button>
                 <ul class="dropdown-menu">
-                    @foreach (var sucursal in Model.ListaSucursales)
+                    2@foreach (var sucursal in Model.ListaSucursales)
                     {
-                        <li><a class="dropdown-item" href="#">@sucursal.Nombre</a></li>
+                        <li><a class="dropdown-item" href="#">2@sucursal.Nombre</a></li>
                     }
                 </ul>
-            </div>
+            </div> -->
+            
+
 
             <!-- Botón Usuario con imagen -->
             @if (User.Identity != null && User.Identity.IsAuthenticated)
@@ -110,7 +111,6 @@
 <h2 class="mt-4">Cartelera</h2>
 <div class="d-flex justify-content-between mb-3">
     <input class="form-control w-25" placeholder="Buscar...">
-    <button class="btn btn-secondary">Filtrar</button>
 </div>
 
 <div class="row row-cols-2 row-cols-md-4 row-cols-xl-5 g-4">

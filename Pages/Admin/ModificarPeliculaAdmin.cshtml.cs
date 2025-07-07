@@ -56,25 +56,37 @@ public class ModificarPeliculaAdminModel : PageModel
 
         string? rutaImagenNueva = null;
 
+        // Procesar imagen si fue cargada
         if (ArchivoImagen != null)
         {
             string nombreArchivo = Path.GetFileName(ArchivoImagen.FileName);
-            string rutaDestino = Path.Combine(_env.WebRootPath, "images", nombreArchivo);
+            string rutaCarpeta = Path.Combine(_env.WebRootPath, "images", "peliculas");
+            string rutaDestino = Path.Combine(rutaCarpeta, nombreArchivo);
 
+            if (!Directory.Exists(rutaCarpeta))
+                Directory.CreateDirectory(rutaCarpeta);
+
+            // Sobrescribe si ya existe
             using (var stream = new FileStream(rutaDestino, FileMode.Create))
             {
                 ArchivoImagen.CopyTo(stream);
             }
 
-            rutaImagenNueva = "/images/" + nombreArchivo;
+            rutaImagenNueva = $"/images/peliculas/{nombreArchivo}";
         }
 
         if (Pelicula.Id == 0)
         {
+            // Validar imagen obligatoria al crear nueva película
+            if (rutaImagenNueva == null)
+            {
+                ModelState.AddModelError(string.Empty, "Debe subir una imagen para la película.");
+                return Page();
+            }
+
             Pelicula.Activa = true;
             Pelicula.Idioma = string.Join(",", IdiomasSeleccionados);
-            if (rutaImagenNueva != null)
-                Pelicula.Imagen = rutaImagenNueva;
+            Pelicula.Imagen = rutaImagenNueva;
 
             _context.Peliculas.Add(Pelicula);
         }

@@ -4,7 +4,7 @@
     ViewData["Title"] = Model.EsNueva ? "Añadir Película" : "Modificar Película";
     Layout = null;
     var imagenCargada = !string.IsNullOrEmpty(Model.Pelicula.Imagen);
-    var rutaPlaceholder = "/images/iconos/placeholder-image.png"; // Debes tener esta imagen en wwwroot/images/
+    var rutaPlaceholder = "/images/iconos/placeholder-image.png";
 }
 
 <!DOCTYPE html>
@@ -20,59 +20,80 @@
 <a asp-page="CarteleraAdmin" class="back-button">Regresar</a>
 
 <div class="container">
-    <div class="image-section">
-        <div class="image-preview-box">
-            <img id="preview" src="@(imagenCargada ? Model.Pelicula.Imagen : rutaPlaceholder)" alt="Vista previa" />
-        </div>
-        <label class="upload-label">
-            <span>Subir imagen</span>
-            <input type="file" name="ArchivoImagen" accept="image/*" onchange="previewImage(this)" hidden />
-        </label>
-    </div>
 
-    <form method="post" enctype="multipart/form-data" class="form-card">
-        <h3 style="text-align: center;">Película</h3>
-        <p style="text-align: center; font-size: 0.8rem;">Agregar/modificar película</p>
-
-        <label>Título</label>
-        <input asp-for="Pelicula.Titulo" />
-
-        <label>Género</label>
-        <input asp-for="Pelicula.Genero" />
-
-        <label>Duración</label>
-        <input asp-for="Pelicula.Duracion" type="number" />
-
-        <label>Clasificación</label>
-        <select asp-for="Pelicula.Clasificacion">
-            <option value="">Seleccione</option>
-            <option>G</option>
-            <option>PG</option>
-            <option>PG-13</option>
-            <option>R</option>
-            <option>B</option>
-            <option>C</option>
-        </select>
-
-        <label>Sinopsis</label>
-        <textarea asp-for="Pelicula.Sinopsis"></textarea>
-
-        <label>Idiomas disponibles</label>
-        <div class="idiomas-group">
-            @foreach (var idioma in new[] { "Español", "Inglés", "Francés", "Subtitulado" })
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="error-box" style="margin-bottom: 1rem; color: red;">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
             {
-                <label>
-                    <input type="checkbox" name="IdiomasSeleccionados" value="@idioma"
-                        @(Model.Pelicula.Idioma != null && Model.Pelicula.Idioma.Split(',').Contains(idioma) ? "checked" : "") />
-                    <span>@idioma</span>
-                </label>
+                <p>@error.ErrorMessage</p>
             }
         </div>
+    }
 
-        <input type="hidden" asp-for="Pelicula.Activa" />
-        <input type="hidden" asp-for="Pelicula.Imagen" />
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-wrapper">
 
-        <button type="submit" class="btn-primary">Guardar</button>
+            <!-- 📷 Imagen -->
+            <div class="image-section">
+                <div class="image-preview-box">
+                    <img id="preview" src="@(imagenCargada ? Model.Pelicula.Imagen : rutaPlaceholder)" alt="Vista previa" />
+                </div>
+                <label class="upload-label">
+                    <span>Subir imagen</span>
+                    <input asp-for="ArchivoImagen" type="file" accept="image/*" onchange="previewImage(this)" hidden />
+                </label>
+            </div>
+
+            <!-- 📝 Formulario -->
+            <div class="form-section form-card">
+                <h3 style="text-align: center;">Película</h3>
+                <p style="text-align: center; font-size: 0.8rem;">Agregar/modificar película</p>
+
+                <label>Título</label>
+                <input asp-for="Pelicula.Titulo" />
+
+                <label>Género</label>
+                <input asp-for="Pelicula.Genero" />
+
+                <label>Duración</label>
+                <input asp-for="Pelicula.Duracion" type="number" />
+
+                <label>Clasificación</label>
+                <select asp-for="Pelicula.Clasificacion">
+                    <option value="">Seleccione</option>
+                    <option>G</option>
+                    <option>PG</option>
+                    <option>PG-13</option>
+                    <option>R</option>
+                    <option>B</option>
+                    <option>C</option>
+                </select>
+
+                <label>Sinopsis</label>
+                <textarea asp-for="Pelicula.Sinopsis"></textarea>
+
+                <label>Idiomas disponibles</label>
+                <div class="idiomas-group">
+                    @foreach (var idioma in new[] { "Español", "Inglés", "Francés", "Subtitulado" })
+                    {
+                        <label>
+                            <input type="checkbox" name="IdiomasSeleccionados" value="@idioma"
+                                   @(Model.Pelicula.Idioma != null && Model.Pelicula.Idioma.Split(',').Contains(idioma) ? "checked" : "") />
+                            <span>@idioma</span>
+                        </label>
+                    }
+                </div>
+
+                <!-- ✅ Campos ocultos para que Razor envíe todo -->
+                <input type="hidden" asp-for="Pelicula.Id" />
+                <input type="hidden" asp-for="Pelicula.Activa" />
+                <input type="hidden" asp-for="Pelicula.Imagen" />
+
+                <button type="submit" class="btn-primary">Guardar</button>
+            </div>
+
+        </div>
     </form>
 </div>
 
