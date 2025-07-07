@@ -1,4 +1,5 @@
 @page
+@using Proyecto_Cine.Pages.Cliente
 @model FuncionesModel
 @if (TempData["Error"] != null)
 {
@@ -18,40 +19,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/css/FuncionesCliente.css"/>
     <style>
-        .horario-seleccionado {
-            background-color: deepskyblue !important;
-            color: white !important;
-        }
+    .horario-seleccionado {
+        background-color: deepskyblue !important;
+        color: white !important;
+    }
 
-        .modal {
-            position: fixed;
-            z-index: 1000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .modal {
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .modal-content {
-            background-color: white;
-            color: black;
-            padding: 2rem;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-        }
+    .modal-content {
+        background-color: white;
+        color: black;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+    }
 
-        .cerrar {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-    </style>
+    .cerrar {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+
+    .boleto-modal {
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .boleto-modal-content {
+        background-color: #111;
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        text-align: center;
+    }
+
+    .boleto-modal-content h2 {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+
+    .btn-cerrar {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn-regresar {
+        background-color: deepskyblue;
+        color: white;
+        border: none;
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-regresar:hover {
+        background-color: #00a8ff;
+    }
+
+    .tipos-boletos {
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .tipos-boletos .boleto-linea {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .boleto-linea small {
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    .controles-cantidad {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .controles-cantidad button {
+        background-color: deepskyblue;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .controles-cantidad input {
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        color: black;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .total-boletos {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .btn-seleccionar {
+        background-color: deepskyblue;
+        border: none;
+        color: white;
+        padding: 0.9rem 2.5rem;
+        border-radius: 12px;
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-seleccionar:hover {
+        background-color: #00a8ff;
+    }
+</style>
 </head>
 <body>
 
@@ -63,25 +206,10 @@
     </div>
 
     <div>
-        <h1>Funciones</h1>
-        <p>Horarios y salas disponibles</p>
+        <h1><strong>Funciones, horarios y salas disponibles</strong></h1>
+
     </div>
-    <div class="menu-desplegables">
-        <select>
-            <option>Seleccione su ubicación</option>
-            <option>Aguascalientes</option>
-            <option>Campeche</option>
-            <option>CDMX</option>
-            <option>Puebla</option>
-        </select>
-        <select>
-            <option>Seleccione su sucursal</option>
-            <option>Plaza 1</option>
-            <option>Plaza 2</option>
-            <option>Plaza 3</option>
-            <option>Plaza 4</option>
-        </select>
-    </div>
+
     <div class="icono-user">
         @if (User.Identity != null && User.Identity.IsAuthenticated)
         {
@@ -105,15 +233,6 @@
     <a asp-page="/Cliente/SeleccionAsientos">Asientos</a> › 
     <a asp-page="/Cliente/Resumen">Resumen</a>
 </nav>
-
-<section class="seleccion-fecha">
-    <label>Fecha</label>
-    <form method="get" class="input-fecha">
-        <input type="hidden" name="id" value="@Model.Pelicula?.Id" />
-        <input type="date" name="fecha" value="@(Model.Fecha?.ToString() ?? "")" />
-        <button type="submit" class="btn-filtrar">🧪 Filtrar</button>
-    </form>
-</section>
 
 <section class="contenedor-funciones">
     <div class="lista-funciones">
@@ -161,17 +280,28 @@
     <button class="btn-continuar" id="btnContinuar" onclick="abrirModal()" disabled>Continuar</button>
 </footer>
 
-<div id="modalCompra" class="modal" style="display:none;">
-    <div class="modal-content">
-        <span class="cerrar" onclick="cerrarModal()">&times;</span>
-        <h2>Seleccionar boletos</h2>
+<div id="modalCompra" class="boleto-modal" style="display:none;">
+    <div class="boleto-modal-content">
+        <button class="btn-cerrar" onclick="cerrarModal()">×</button>
+        <button class="btn-regresar" onclick="cerrarModal()">
+            <span>🡸</span> Atrás
+        </button>
+        <h2>Selecciona tus boletos</h2>
         <form id="formCompra" method="get" action="/Cliente/SeleccionAsientos">
             <input type="hidden" name="idFuncion" id="FuncionId" />
             <input type="hidden" name="boletos" id="BoletosSeleccionadosJson" />
-            <div id="tiposBoletos">Cargando...</div>
-            <button type="submit" class="btn-continuar">Continuar</button>
-        </form>
 
+            <div id="tiposBoletos" class="tipos-boletos">
+                <!-- Dinámico vía fetch -->
+            </div>
+
+            <div class="total-boletos">
+                <strong>Total: <span id="totalCantidad">0 boletos</span></strong>
+                <div><strong id="totalPrecio">$0.00 mx</strong></div>
+            </div>
+
+            <button type="submit" class="btn-seleccionar">Seleccionar</button>
+        </form>
     </div>
 </div>
 
@@ -204,13 +334,22 @@
             .then(data => {
                 cont.innerHTML = '';
                 data.forEach(item => {
-                    cont.innerHTML += `
-                        <label>
-                            ${item.nombre} ($${item.precio.toFixed(2)}):
-                            <input type="number" name="boletos[${item.id}]" min="0" value="0" />
-                        </label><br/>
+                    const linea = document.createElement('div');
+                    linea.className = 'boleto-linea';
+                    linea.innerHTML = `
+                        <div>
+                            <div>${item.nombre}</div>
+                            <small>$${item.precio.toFixed(2)} mx</small>
+                        </div>
+                        <div class="controles-cantidad">
+                            <button type="button" onclick="cambiarCantidad(${item.id}, -1)">−</button>
+                            <input type="text" id="cantidad_${item.id}" value="0" readonly />
+                            <button type="button" onclick="cambiarCantidad(${item.id}, 1)">+</button>
+                        </div>
                     `;
+                    cont.appendChild(linea);
                 });
+                actualizarTotales();
             });
 
         document.getElementById('modalCompra').style.display = 'flex';
@@ -220,23 +359,41 @@
         document.getElementById('modalCompra').style.display = 'none';
     }
 
+    function cambiarCantidad(id, delta) {
+        const input = document.getElementById(`cantidad_${id}`);
+        let val = parseInt(input.value) || 0;
+        val = Math.max(0, val + delta);
+        input.value = val;
+        actualizarTotales();
+    }
+
+    function actualizarTotales() {
+        let totalCantidad = 0;
+        let totalPrecio = 0;
+        document.querySelectorAll('#tiposBoletos input[id^="cantidad_"]').forEach(input => {
+            const id = input.id.split('_')[1];
+            const cantidad = parseInt(input.value);
+            const precio = parseFloat(input.closest('.boleto-linea').querySelector('small').textContent.replace('$', '').replace(' mx', ''));
+            totalCantidad += cantidad;
+            totalPrecio += cantidad * precio;
+        });
+
+        document.getElementById('totalCantidad').textContent = `${totalCantidad} boletos`;
+        document.getElementById('totalPrecio').textContent = `$${totalPrecio.toFixed(2)} mx`;
+    }
+
     document.getElementById('formCompra').addEventListener('submit', function (e) {
         const boletos = {};
-        const inputs = document.querySelectorAll('#tiposBoletos input[type="number"]');
-
-        inputs.forEach(input => {
-            const match = input.name.match(/boletos\[(\d+)\]/);
-            if (match) {
-                const tipoId = match[1];
-                const cantidad = parseInt(input.value);
-                if (cantidad > 0) {
-                    boletos[tipoId] = cantidad;
-                }
+        document.querySelectorAll('#tiposBoletos input[id^="cantidad_"]').forEach(input => {
+            const id = input.id.split('_')[1];
+            const cantidad = parseInt(input.value);
+            if (cantidad > 0) {
+                boletos[id] = cantidad;
             }
         });
 
         if (!funcionSeleccionadaId || Object.keys(boletos).length === 0) {
-            alert("Debes seleccionar una función y al menos un boleto.");
+            alert("Debes seleccionar al menos un boleto.");
             e.preventDefault();
             return;
         }
