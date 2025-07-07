@@ -15,6 +15,8 @@ public partial class Sala
 
     public int? IdSucursal { get; set; }
 
+    public string Estado { get; set; } = "Activa";
+
     public virtual ICollection<Asiento> Asientos { get; set; } = new List<Asiento>();
 
     public virtual ICollection<Funcione> Funciones { get; set; } = new List<Funcione>();

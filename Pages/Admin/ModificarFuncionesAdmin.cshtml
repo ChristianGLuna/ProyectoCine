@@ -21,7 +21,16 @@
     <div class="form-card">
         <h2>Agregar / Editar Función</h2>
 
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert-danger" style="background-color: #f8d7da; padding: 1rem; margin-bottom: 1rem; border-radius: 5px; color: #721c24;">
+                Hay errores en el formulario. Por favor, revísalos.
+            </div>
+        }
+
         <form method="post" class="form-box">
+            <input type="hidden" asp-for="Funcion.Id" />
+
             <label>Película:</label>
             <select asp-for="Funcion.PeliculaId">
                 <option value="">Selecciona una película</option>
@@ -30,6 +39,7 @@
                     <option value="@p.Id">@p.Titulo</option>
                 }
             </select>
+            <span asp-validation-for="Funcion.PeliculaId" class="text-danger"></span>
 
             <label>Sala:</label>
             <select asp-for="Funcion.SalaId">
@@ -39,15 +49,19 @@
                     <option value="@s.Id">@s.Nombre</option>
                 }
             </select>
+            <span asp-validation-for="Funcion.SalaId" class="text-danger"></span>
 
             <label>Fecha:</label>
             <input asp-for="Funcion.Fecha" type="date" />
+            <span asp-validation-for="Funcion.Fecha" class="text-danger"></span>
 
             <label>Hora de inicio:</label>
             <input asp-for="Funcion.HoraInicio" type="time" />
+            <span asp-validation-for="Funcion.HoraInicio" class="text-danger"></span>
 
             <label>Hora de fin:</label>
             <input asp-for="Funcion.HoraFin" type="time" />
+            <span asp-validation-for="Funcion.HoraFin" class="text-danger"></span>
 
             <label>Idioma:</label>
             <select asp-for="Funcion.Idioma">
@@ -55,6 +69,7 @@
                 <option value="Español">Español</option>
                 <option value="Subtitulada">Subtitulada</option>
             </select>
+            <span asp-validation-for="Funcion.Idioma" class="text-danger"></span>
 
             <label>Formato:</label>
             <select asp-for="Funcion.Formato">
@@ -63,17 +78,40 @@
                 <option value="3D">3D</option>
                 <option value="IMAX">IMAX</option>
             </select>
+            <span asp-validation-for="Funcion.Formato" class="text-danger"></span>
 
-            @* <label>Precio:</label>
-            <input asp-for="Funcion.Precio" type="number" step="0.01" placeholder="Ej: 100.00" /> *@
+            <label>Estado:</label>
+            <select asp-for="Funcion.Estado">
+                <option value="">Selecciona un estado</option>
+                <option value="Activa">Activa</option>
+                <option value="Inactiva">Inactiva</option>
+                <option value="Finalizada">Finalizada</option>
+            </select>
+            <span asp-validation-for="Funcion.Estado" class="text-danger"></span>
 
             <div class="form-actions">
                 <button type="submit" class="btn">Guardar</button>
                 <a asp-page="/Admin/FuncionesAdmin" class="btn">Cancelar</a>
             </div>
         </form>
+
+        @* Mostrar errores generales del modelo *@
+        @foreach (var entry in ViewData.ModelState)
+        {
+            foreach (var error in entry.Value.Errors)
+            {
+                <div style="color:red; margin-top:1rem;">
+                    ❌ <strong>Campo:</strong> @entry.Key → @error.ErrorMessage
+                </div>
+            }
+        }
+
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
 </body>
 </html>

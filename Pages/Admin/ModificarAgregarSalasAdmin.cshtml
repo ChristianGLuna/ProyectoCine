@@ -1,90 +1,61 @@
 @page "{id?}"
-@model Proyecto_Cine.Pages.Admin.ModificarPeliculaAdminModel
+@model Proyecto_Cine.Pages.Admin.ModificarAgregarSalasAdminModel
 @{
-    ViewData["Title"] = Model.EsNueva ? "Añadir Película" : "Modificar Película";
     Layout = null;
-    var imagenCargada = !string.IsNullOrEmpty(Model.Pelicula.Imagen);
-    var rutaPlaceholder = "/images/iconos/placeholder-image.png"; // Debes tener esta imagen en wwwroot/images/
+    ViewData["Title"] = "Modificar/Agregar Sala";
 }
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="/css/ModificarPeliculaAdmin.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/Sitio.css" />
 </head>
 <body>
 
-<a asp-page="CarteleraAdmin" class="back-button">Regresar</a>
+<a asp-page="/Admin/SalasAdmin" class="back-link">← Regresar</a>
 
-<div class="container">
-    <div class="image-section">
-        <div class="image-preview-box">
-            <img id="preview" src="@(imagenCargada ? Model.Pelicula.Imagen : rutaPlaceholder)" alt="Vista previa" />
-        </div>
-        <label class="upload-label">
-            <span>Subir imagen</span>
-            <input type="file" name="ArchivoImagen" accept="image/*" onchange="previewImage(this)" hidden />
-        </label>
+<div class="form-container">
+    <div class="form-card">
+        <h2>Sala</h2>
+        <p>Agregar o modificar una sala</p>
+
+        <form method="post" class="form-box">
+            <!-- Mantener el ID en el formulario -->
+            <input type="hidden" asp-for="Sala.Id" />
+
+            <label>Nombre</label>
+            <input asp-for="Sala.Nombre" />
+
+            <label>Capacidad</label>
+            <input asp-for="Sala.Capacidad" type="number" />
+
+            <label>Formato</label>
+            <select asp-for="Sala.Tipo">
+                <option value="Estándar">Estándar</option>
+                <option value="3D">3D</option>
+                <option value="IMAX">IMAX</option>
+            </select>
+
+            <label>Sucursal</label>
+            <select asp-for="Sala.IdSucursal">
+                @foreach (var sucursal in Model.Sucursales)
+                {
+                    <option value="@sucursal.Id" selected="@(sucursal.Id == Model.Sala.IdSucursal)">
+                        @sucursal.Nombre
+                    </option>
+                }
+            </select>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Guardar Sala</button>
+                <a asp-page="/Admin/SalasAdmin" class="btn">Cancelar</a>
+            </div>
+        </form>
     </div>
-
-    <form method="post" enctype="multipart/form-data" class="form-card">
-        <h3 style="text-align: center;">Película</h3>
-        <p style="text-align: center; font-size: 0.8rem;">Agregar/modificar película</p>
-
-        <label>Título</label>
-        <input asp-for="Pelicula.Titulo" />
-
-        <label>Género</label>
-        <input asp-for="Pelicula.Genero" />
-
-        <label>Duración</label>
-        <input asp-for="Pelicula.Duracion" type="number" />
-
-        <label>Clasificación</label>
-        <select asp-for="Pelicula.Clasificacion">
-            <option value="">Seleccione</option>
-            <option>G</option>
-            <option>PG</option>
-            <option>PG-13</option>
-            <option>R</option>
-            <option>B</option>
-            <option>C</option>
-        </select>
-
-        <label>Sinopsis</label>
-        <textarea asp-for="Pelicula.Sinopsis"></textarea>
-
-        <label>Idiomas disponibles</label>
-        <div class="idiomas-group">
-            @foreach (var idioma in new[] { "Español", "Inglés", "Francés", "Subtitulado" })
-            {
-                <label>
-                    <input type="checkbox" name="IdiomasSeleccionados" value="@idioma"
-                        @(Model.Pelicula.Idioma != null && Model.Pelicula.Idioma.Split(',').Contains(idioma) ? "checked" : "") />
-                    <span>@idioma</span>
-                </label>
-            }
-        </div>
-
-        <input type="hidden" asp-for="Pelicula.Activa" />
-        <input type="hidden" asp-for="Pelicula.Imagen" />
-
-        <button type="submit" class="btn-primary">Guardar</button>
-    </form>
 </div>
-
-<script>
-    function previewImage(input) {
-        const file = input.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = e => document.getElementById('preview').src = e.target.result;
-        reader.readAsDataURL(file);
-    }
-</script>
 
 </body>
 </html>

@@ -17,7 +17,8 @@ namespace Proyecto_Cine.Pages.Admin
         public List<Pelicula> Peliculas { get; set; } = new();
         public List<Sala> Salas { get; set; } = new();
 
-        public Dictionary<string, List<Funcione>> FuncionesAgrupadas { get; set; } = new();
+        public Dictionary<string, List<Funcione>> FuncionesActivas { get; set; } = new();
+        public Dictionary<string, List<Funcione>> FuncionesInactivas { get; set; } = new();
 
         [BindProperty(SupportsGet = true)]
         public int? FiltroPeliculaId { get; set; }
@@ -41,20 +42,25 @@ namespace Proyecto_Cine.Pages.Admin
             if (FiltroPeliculaId.HasValue)
                 query = query.Where(f => f.PeliculaId == FiltroPeliculaId);
 
-
             if (FiltroSalaId.HasValue)
                 query = query.Where(f => f.SalaId == FiltroSalaId);
-
 
             if (FiltroFecha.HasValue)
                 query = query.Where(f => f.Fecha == FiltroFecha);
 
-            FuncionesAgrupadas = query
+            // Funciones activas
+            FuncionesActivas = query
+                .Where(f => f.Estado == "Activa")
                 .ToList()
                 .GroupBy(f => f.Pelicula.Titulo)
-                
                 .ToDictionary(g => g.Key!, g => g.ToList());
 
+            // Funciones inactivas
+            FuncionesInactivas = query
+                .Where(f => f.Estado == "Inactiva")
+                .ToList()
+                .GroupBy(f => f.Pelicula.Titulo)
+                .ToDictionary(g => g.Key!, g => g.ToList());
         }
 
         public IActionResult OnPostEliminar(int id)
@@ -62,7 +68,8 @@ namespace Proyecto_Cine.Pages.Admin
             var funcion = _context.Funciones.Find(id);
             if (funcion != null)
             {
-                _context.Funciones.Remove(funcion);
+                funcion.Estado = "Inactiva"; // ✅ Desactiva en lugar de borrar
+                _context.Funciones.Update(funcion);
                 _context.SaveChanges();
             }
 

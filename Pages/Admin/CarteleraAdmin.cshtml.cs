@@ -15,24 +15,27 @@ public class CarteleraAdminModel : PageModel
     }
 
     public List<Pelicula> Peliculas { get; set; } = new();
+    public List<Pelicula> PeliculasInactivas { get; set; } = new();
 
     [BindProperty(SupportsGet = true)]
     public string? SearchTerm { get; set; }
 
     public void OnGet()
     {
-        var query = _context.Peliculas
-            .Where(p => p.Activa == true); // Solo películas activas
+        var queryActivas = _context.Peliculas.Where(p => p.Activa == true);
+        var queryInactivas = _context.Peliculas.Where(p => p.Activa == false);
 
         if (!string.IsNullOrWhiteSpace(SearchTerm))
         {
-            query = query.Where(p => p.Titulo.Contains(SearchTerm));
+            queryActivas = queryActivas.Where(p => p.Titulo.Contains(SearchTerm));
+            queryInactivas = queryInactivas.Where(p => p.Titulo.Contains(SearchTerm));
         }
 
-        Peliculas = query.ToList();
+        Peliculas = queryActivas.ToList();
+        PeliculasInactivas = queryInactivas.ToList();
     }
 
-    // Método POST: desactiva una película (Quitar)
+    // Desactiva una película (Quitar)
     public async Task<IActionResult> OnPostDesactivarAsync(int id)
     {
         var pelicula = await _context.Peliculas.FindAsync(id);
@@ -42,6 +45,19 @@ public class CarteleraAdminModel : PageModel
             await _context.SaveChangesAsync();
         }
 
-        return RedirectToPage(); // Refresca la cartelera
+        return RedirectToPage();
+    }
+
+    // Activa una película (Volver a cartelera)
+    public async Task<IActionResult> OnPostActivarAsync(int id)
+    {
+        var pelicula = await _context.Peliculas.FindAsync(id);
+        if (pelicula != null && pelicula.Activa == false)
+        {
+            pelicula.Activa = true;
+            await _context.SaveChangesAsync();
+        }
+
+        return RedirectToPage();
     }
 }

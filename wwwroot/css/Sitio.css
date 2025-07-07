@@ -1,3 +1,85 @@
+/* Estilo para tarjetas inactivas */
+.sala-card.inactive {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    opacity: 1;
+    color: #444;
+}
+
+/* Texto más visible */
+.sala-card.inactive h4 {
+    color: #333;
+}
+
+/* Botón "Activar" */
+.btn-activar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-activar:hover {
+    background-color: #218838;
+}
+
+/* Separación entre secciones */
+h3 {
+    margin-top: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.estado-activa {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.estado-inactiva {
+    color: #6c757d;
+    background-color: #e2e3e5;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.estado-finalizada {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1rem;
+    background-color: deepskyblue;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    width: fit-content;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #00a8ff;
+}
+
+.back-button::before {
+    content: "🡸";
+    font-size: 1.2rem;
+}
+
 body {
     margin: 0;
     background-color: #1e1e1e;
@@ -56,7 +138,7 @@ a {
 }
 
 h1, h2, h3, h4 {
-    margin-top: 0;
+    margin-top: 1;
 }
 
 .form-actions .btn{
@@ -75,20 +157,38 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
 }
 
-.toolbar .btn,
-button.btn,
-a.btn {
+.btn-edit {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 4px;
     background-color: deepskyblue;
-    color: black;
+    color: white;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
 }
 .form-actions .btn{
     margin: 1rem;
+}
+
+.toolbar .btn,
+button.btn,
+a.btn {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.7rem 2.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: deepskyblue;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #00a8ff;
 }
 
 .form-box label {
@@ -138,6 +238,17 @@ a.btn {
     flex-wrap: wrap;
 }
 
+.btn-accion {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: deepskyblue;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
 
 .btn-remove {
     background-color: #b00;
@@ -146,6 +257,15 @@ a.btn {
     border: none;
     cursor: pointer;
     border-radius: 4px;
+}
+
+.btn-remove {
+    background-color: #8b0000;
+    color: white;
+}
+
+.btn-remove:hover {
+    background-color: #a30000;
 }
 
 .edit-link {

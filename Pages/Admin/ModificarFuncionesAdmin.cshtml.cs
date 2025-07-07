@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Cine.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto_Cine.Pages.Admin
 {
@@ -27,16 +28,20 @@ namespace Proyecto_Cine.Pages.Admin
 
             if (id.HasValue)
             {
-                Funcion = _context.Funciones.FirstOrDefault(f => f.Id == id) ?? new Funcione();
+                Funcion = _context.Funciones
+                    .AsNoTracking()
+                    .FirstOrDefault(f => f.Id == id) ?? new Funcione();
             }
         }
 
         public IActionResult OnPost()
         {
+            Peliculas = _context.Peliculas.ToList();
+            Salas = _context.Salas.ToList();
+
             if (!ModelState.IsValid)
                 return Page();
 
-            // 🔍 Validar traslapes
             bool hayConflicto = _context.Funciones.Any(f =>
                 f.Id != Funcion.Id &&
                 f.SalaId == Funcion.SalaId &&
@@ -54,15 +59,20 @@ namespace Proyecto_Cine.Pages.Admin
                 return Page();
             }
 
-            // Guardar o actualizar
             if (Funcion.Id > 0)
+            {
                 _context.Funciones.Update(Funcion);
+            }
             else
+            {
+                Funcion.Estado = "Activa"; // ✅ estado por defecto al crear
                 _context.Funciones.Add(Funcion);
+            }
 
             _context.SaveChanges();
-            return RedirectToPage("/Admin/FuncionesAdmin");
+
+            TempData["MensajeExito"] = "✅ Función guardada exitosamente.";
+            return RedirectToPage("/Admin/FuncionesAdmin", new { FiltroPeliculaId = (int?)null, FiltroSalaId = (int?)null, FiltroFecha = (DateOnly?)null });
         }
     }
-
 }
