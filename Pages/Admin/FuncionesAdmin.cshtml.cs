@@ -75,5 +75,18 @@ namespace Proyecto_Cine.Pages.Admin
 
             return RedirectToPage();
         }
+
+        public IActionResult OnPostActivar(int id)
+        {
+            var funcion = _context.Funciones.Find(id);
+            if (funcion != null)
+            {
+                funcion.Estado = "Activa";
+                _context.Funciones.Update(funcion);
+                _context.SaveChanges();
+            }
+
+            return RedirectToPage();
+        }
     }
 }
